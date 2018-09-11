@@ -2,20 +2,26 @@
 <head>
 <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+
+<link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet"/>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+<script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
 </head>
 
 <body>
-
-
-<div style="position: relative">
-    <div id="map" style="height: 400px"></div>
+  
+  <div style="position: relative">
+  <div id="widget-container" class="wrld-widget-container"></div>
+  <div id="map" style="height: 400px"></div>
     <script>
       var map = L.Wrld.map("map", "428f42677b8a34403e10a5999da0721e", {
         center: [56.459883, -2.977495],
-        zoom: 16
+        zoom: 17,
+        indoorsEnabled: true
       });
+	  
+	  var indoorControl = new WrldIndoorControl("widget-container", map);
     </script>
-
-  </div>
 </body>
 </html>
