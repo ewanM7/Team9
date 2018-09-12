@@ -1,19 +1,23 @@
 <html>
+
 <head>
-<script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
 
-<link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet"/>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-<script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
+    <link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
 
-<!-- Stuff for sidebar -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
-integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
- crossorigin=""/>
+    <!-- Stuff for sidebar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+        crossorigin="" />
+
+
+
+
 
     <link rel="stylesheet" href="leaflet-sidebar.css" />
 
@@ -23,7 +27,9 @@ integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcF
             margin: 0;
         }
 
-        html, body, #map {
+        html,
+        body,
+        #map {
             height: 100%;
             font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
         }
@@ -32,61 +38,48 @@ integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcF
             font-style: italic;
             color: #AAA;
         }
+
+        .disabled {
+            pointer-events: none;
+            opacity: 0;
+        }
     </style>
-	
-	
-<!-- End of sidebar stuff -->
+
+
+    <!-- End of sidebar stuff -->
 
 
 </head>
 
 <body>
 
-<!-- Sidebar Stuff -->
-<div id="sidebar" class="leaflet-sidebar collapsed">
+
+
+
+
+    <!-- Sidebar Stuff -->
+    <div id="sidebar" class="leaflet-sidebar collapsed">
         <!-- Nav tabs -->
         <div class="leaflet-sidebar-tabs">
             <ul role="tablist">
                 <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
-                <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
-                <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+
             </ul>
 
-            <ul role="tablist">
-                <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
-            </ul>
+
         </div>
 
         <!-- Tab panes -->
         <div class="leaflet-sidebar-content">
             <div class="leaflet-sidebar-pane" id="home">
                 <h1 class="leaflet-sidebar-header">
-                    sidebar-v2
+                    Information
                     <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
                 </h1>
 
-                <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-
-                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>Sidebar info goes here.</p>
             </div>
 
-            <div class="leaflet-sidebar-pane" id="profile">
-                <h1 class="leaflet-sidebar-header">Profile<span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span></h1>
-            </div>
-
-            <div class="leaflet-sidebar-pane" id="messages">
-                <h1 class="leaflet-sidebar-header">Messages<span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span></h1>
-            </div>
-
-            <div class="leaflet-sidebar-pane" id="settings">
-                <h1 class="leaflet-sidebar-header">Settings<span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span></h1>
-            </div>
         </div>
     </div>
 
@@ -94,31 +87,48 @@ integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcF
 
 
 
-    <script src="leaflet-sidebar.js"></script>
 
-	<!-- Sidebar stuff-->
 
-  
-  <div style="position: relative">
-  <div id="widget-container" class="wrld-widget-container"></div>
-  <div id="map" style="height: 400px"></div>
-    <script>
-      var map = L.Wrld.map("map", "428f42677b8a34403e10a5999da0721e", {
-        center: [56.459883, -2.977495],
-        zoom: 17,
-        indoorsEnabled: true
-      });
-	  
-	  var indoorControl = new WrldIndoorControl("widget-container", map);
-    </script>
-	
-	<!-- Sidebar stuff -->
-	 <script src="../leaflet-sidebar.js"></script>
-	  <script>
-	  var sidebar = L.control.sidebar({ container: 'sidebar', position: 'right' }).addTo(map)
-	  <!-- End of Sidebar -->
-	  
-    </script>
-	
+
+    <!-- Sidebar stuff-->
+
+
+    <div style="position: relative">
+        <div id="widget-container" class="wrld-widget-container"></div>
+        <div id="map" style="height: 400px"></div>
+        <script>
+            var map = L.Wrld.map("map", "428f42677b8a34403e10a5999da0721e", {
+                center: [56.459883, -2.977495],
+                zoom: 17,
+                indoorsEnabled: true
+            });
+
+            var indoorControl = new WrldIndoorControl("widget-container", map);
+        </script>
+
+        <!-- Sidebar stuff -->
+        <script src="../leaflet-sidebar.js"></script>
+        <script>
+            var sidebar = L.control.sidebar({ container: 'sidebar', position: 'right' }).addTo(map)
+
+
+            if (!map.indoors.isIndoors()) {
+                $("#sidebar").addClass("disabled");
+            }
+
+            map.indoors.on("indoormapenter", function (e) {
+                $("#sidebar").removeClass("disabled");
+            });
+
+            map.indoors.on("indoormapexit", function (e) {
+                $("#sidebar").addClass("disabled");
+                console.log("left");
+            });
+
+
+        </script>
+        <!-- End of Sidebar -->
+
 </body>
+
 </html>
