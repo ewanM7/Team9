@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8" />
+<html>
+
+<head>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/poi_api/latest/poi_api.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+
+  <link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/searchbar/latest/searchbar.js"></script>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/marker_controller/latest/marker_controller.js"></script>
+
+  <script src="./js/MarkerController.js"></script>
+  <script src="./js/MapController.js"></script>
+  <script src="./js/PoiViewContainer.js"></script>
+  <script src="./js/DomHelpers.js"></script>
+  <script src="./js/PoiView.js"></script>
+  
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/custom_style.css">
+  <link rel="stylesheet" type="text/css" href="css/sidebarStyling.css">
+
+</head>
+
+<body>
+
+  <!-- Modal content -->
+  <div id="myModal" class="modal-content">
+    <span class="close">&times;</span>
+    <div class="eegeo-marker-pin-icon frame-icon"></div>
+    <p id="poiText"></p>
+
+    <div class="frame-container">
+      <iframe class="frame" src="https://zeno.computing.dundee.ac.uk/2018-projects/team9/thanos.html"></iframe>
+    </div>
+  </div>
+
+
+  <div id="widget-container" class="wrld-widget-container"></div>
+  <div id="map" style="height: 100%; width: 75%"></div>
+  <div id="paneldiv" class="paneldiv" style="float:right; width:25.5%;">
+    <table class="darkTable">
+      <tr>
+        <th colspan="3" style="height:75px; text-align:center;">Westport House</th>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;"><img src="images/energy.png" style="width: 50px;"></td>
+        <td style="border-left:0px;">Energy</td>
+        <td>DATA_VALUE</td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;" "><img src="images/gas.png " style="width: 50px; "></td><td style="border-left:0px; ">Gas</td><td>DATA_VALUE</td>
+          </tr>
+          <tr>
+            <td style="width:10px; border-right:0px; ""><img src="images/co2.png" style="width: 50px;"></td>
+        <td
+          style="border-left:0px;">CO2</td>
+        <td>DATA_VALUE</td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;" "><img src="images/temp.png " style="width: 50px; "></td><td style="border-left:0px; ">Temperature</td><td>DATA_VALUE</td>
+          </tr>
+          <tr>
+            <td style="width:10px; border-right:0px; ""><img src="images/humidity.png" style="width: 50px;"></td>
+        <td
+          style="border-left:0px;">Humidity</td>
+        <td>DATA_VALUE</td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;" "><img src="images/waste.png " style="width: 50px; "></td><td style="border-left:0px; ">Waste</td><td>DATA_VALUE</td>
+          </tr>
+          <tr>
+            <td colspan="3 " style="height:30px; text-align:left; "><button onclick="showPanel() " style="margin-left:-80px;
+          "> Show</button><button onclick="hidePanel() ">Hide >>></button></td>
+          </tr>
+        </table>
+      </div>
+  </div>
+  <script src="./js/page.js"></script>
+  <script src="./js/sidebar.js"></script>
+  <script src="./js/poiPopUp.js"></script>
+
+  
+</body>
+
+</html>
