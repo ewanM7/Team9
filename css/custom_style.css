@@ -58,3 +58,7 @@ body {
     padding-top: 0.35em;
     padding-left: 3em;
 }
+
+.eegeo-searchbar-container {
+    display: none;
+}
