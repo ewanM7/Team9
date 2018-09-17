@@ -1,6 +1,5 @@
 table{
-   position:absolute;
-   top:0;
+   position:fixed;
 }
 
 th{
@@ -9,22 +8,22 @@ th{
 }
 
 .mapdiv{
-	z-index:-1;
+	
 }
 
 .paneldiv{
-	margin-right:-10px;
+	margin-left: -10px;
+	background-color: #4A4A4A;
 }
 
 table.darkTable {
   font-family: "Arial Black", Gadget, sans-serif;
   border: 2px solid #000000;
   background-color: #4A4A4A;
-  width: 25.5%;
-  height: 100%;
+  width: 25%;
   text-align: center;
   border-collapse: collapse;
-  margin-top: -8px;
+  border-bottom:0px;
 }
 table.darkTable td, table.darkTable th {
   border: 1px solid #4A4A4A;
