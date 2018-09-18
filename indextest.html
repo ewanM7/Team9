@@ -63,8 +63,16 @@
         </td>
       </tr>
       <tr id="sidebar_energy_details" style="display:none;">
-        <td style="border-right:0px;">TEST</td>
-        <td style="border-left:0px;">TEST</td>
+        <td style="border-right:0px;">
+          <script>
+            document.write("Highest : " + getHighestValue("Electricity") + " kWh");
+          </script>
+        </td>
+        <td style="border-left:0px;">
+          <script>
+            document.write("Lowest : " + getLowestValue("Electricity") + " kWh");
+          </script>
+        </td>
         <td>TEST</td>
       </tr>
       <tr>
@@ -81,8 +89,16 @@
         </td>
       </tr>
       <tr id="sidebar_gas_details" style="display:none; ">
-        <td style="border-right:0px; ">TEST</td>
-        <td style="border-left:0px; ">TEST</td>
+        <td style="border-right:0px; ">
+          <script>
+            document.write("Highest : " + getHighestValue("Gas") + " kWh");
+          </script>
+        </td>
+        <td style="border-left:0px; ">
+          <script>
+            document.write("Lowest : " + getLowestValue("Gas") + " kWh");
+          </script>
+        </td>
         <td style=" ">TEST</td>
       </tr>
       <tr>
@@ -99,8 +115,16 @@
         </td>
       </tr>
       <tr id="sidebar_co2_details" style="display:none;">
-        <td style="border-right:0px;">TEST</td>
-        <td style="border-left:0px;">TEST</td>
+        <td style="border-right:0px;">
+          <script>
+            document.write("Highest : " + getHighestValue("CO2") + " kgCO2");
+          </script>
+        </td>
+        <td style="border-left:0px;">
+          <script>
+            document.write("Lowest : " + getLowestValue("CO2") + " kgCO2");
+          </script>
+        </td>
         <td style="">TEST</td>
       </tr>
       <tr>
@@ -119,8 +143,16 @@
         </td>
       </tr>
       <tr id="sidebar_temp_details" style="display:none;">
-        <td style="border-right:0px;">TEST</td>
-        <td style="border-left:0px;">TEST</td>
+        <td style="border-right:0px;">
+          <script>
+            document.write("Highest : " + getHighestValue("Temperature") + " &deg;c");
+          </script>
+        </td>
+        <td style="border-left:0px;">
+          <script>
+            document.write("Lowest : " + getLowestValue("Temperature") + " &deg;c");
+          </script>
+        </td>
         <td style="">TEST</td>
       </tr>
       <tr>
@@ -137,8 +169,16 @@
         </td>
       </tr>
       <tr id="sidebar_humidity_details" style="display:none; ">
-        <td style="border-right:0px; ">TEST</td>
-        <td style="border-left:0px; ">TEST</td>
+        <td style="border-right:0px; ">
+          <script>
+            document.write("Highest : " + getHighestValue("Humidity") + " %");
+          </script>
+        </td>
+        <td style="border-left:0px; ">
+          <script>
+            document.write("Lowest: " + getLowestValue("Humidity") + " %");
+          </script>
+        </td>
         <td style=" ">TEST</td>
       </tr>
       <tr>
@@ -155,9 +195,19 @@
         </td>
       </tr>
       <tr id="sidebar_waste_details" style="display:none; ">
-        <td style="border-right:0px; ">TEST</td>
-        <td style="border-left:0px; ">TEST</td>
-        <td style=" ">TEST</td>
+        <td style="border-right:0px; ">
+          <script>
+            document.write("Lowest : " + getLowestValue("Bins") + " %");
+          </script>
+        </td>
+        <td style="border-left:0px; ">
+          <script>
+            document.write("Lowest : " + getLowestValue("Bins") + " %");
+          </script>
+        </td>
+        <td style=" ">
+          TEST
+        </td>
       </tr>
       <tr>
         <td colspan="3 " style="height:30px; text-align:center; background-color: #4A4A4A; ">
