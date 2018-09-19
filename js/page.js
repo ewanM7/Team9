@@ -9,8 +9,6 @@ headingDegrees: 40,
 indoorsEnabled: true
 });
 
-//var indoorControl = new WrldIndoorControl("widget-container", map);
-
 var searchbarConfig = {
 apiKey: apikey,
 outdoorSearchMenuItems: [
@@ -29,6 +27,8 @@ var markerController = new WrldMarkerController(map, { searchbar: searchbar });
 // POI views are created in this MarkerController class.
 var localMarkerController = new MarkerController(searchbar, markerController, mapController);
 
+var indoorControl = new WrldIndoorControl("widget-container", map);
+
 searchbar.on('searchresultsupdate', (res) => {
 Object.keys(map._layers).forEach(element => {
   map._layers[element].on('click', (e) => {
@@ -42,6 +42,15 @@ Object.keys(map._layers).forEach(element => {
 });
 
 map.indoors.on("indoormapenter", (event) => {
-poiApi.searchIndoors(event.indoorMap.getIndoorMapId(), 0, (s,r)=>(console.log(r)), {});
+	poiApi.searchIndoors(event.indoorMap.getIndoorMapId(), 0, (s,r)=>(console.log(r)), {});
+	document.getElementById("map").style.width = "75%";
+    document.getElementById("paneldiv").style.width = "25%";
+  document.getElementById("showButton").style.visibility = "hidden";
+  searchbar.performTagSearch("", false);
+});
 
+map.indoors.on("indoormapexit", (event) =>{
+	document.getElementById("map").style.width = "100%";
+    document.getElementById("paneldiv").style.width = "0%";
+	document.getElementById("showButton").style.visibility = "hidden";
 });

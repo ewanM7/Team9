@@ -59,7 +59,7 @@ dl, dd, ol, ul, figure {
   font-weight: normal;
   margin: 0 0 0 -4px;
   padding: 0;
-  width: 334px;
+  width: 100%;
   position: relative;
 }
 .poi-view-content .poi-view-image-container, .poi-view-content .poi-view-html-container, .poi-view-content .poi-view-details, .poi-view-content .poi-view-tags, .poi-view-content .poi-view-description-container {

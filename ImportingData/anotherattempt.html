@@ -18,13 +18,25 @@
 
 <script>
 
-tempdata = "..Datasets/CSV/Temperature.csv";
+/*tempdata = "..Datasets/CSV/Temperature.csv";
 
-function csvJSON(csv){
+$.ajax({
+  url: "..Datasets/CSV/Temperature.csv",
+  dataType: 'text',
+}).done(csvJSON);*/
+
+$("button").click(function(){
+    $.get("..Datasets/CSV/Temperature.csv", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+}); 
 
 
+function csvJSON(data){
 
-    var lines=csv.split("\n");
+    alert(data);
+
+    var lines=data.split("\n");
   
     var result = [];
   
@@ -44,11 +56,14 @@ function csvJSON(csv){
     }
     
     //return result; //JavaScript object
-    return JSON.stringify(result); //JSON
+    alert (JSON.stringify(result));
+    var json =  JSON.stringify(result); //JSON
+
+    $("#div1").html(json);
   }
 
-var temperature = csvJSON(tempdata);
+//var temperature = csvJSON(tempdata);
 
-alert(temperature);
+//$("#div1").html(temperature);
 
 </script>

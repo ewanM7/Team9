@@ -6,7 +6,23 @@
 
 <body>
 
-  <div id="div1"></div>
+  <!--<div id="div1"></div>-->
+
+
+  <select id="first-choice">
+    <option selected value="base">Please Select</option>
+    <option value="beverages">Beverages</option>
+    <option value="snacks">Snacks</option>
+  </select>
+
+  <br>
+
+  <select id="second-choice">
+    <option>Please choose from above</option>
+  </select>
+
+
+
 
 </body>
 
@@ -14,52 +30,76 @@
 
 <script>
 
-  var data;
-
   $(document).ready(function () {
+    debugger;
     $.ajax({
-      url: "..Datasets/CSV/Temperature.csv",
+      url: "../Datasets/CSV/Temperature.csv",
       dataType: "text",
+      error: function (jqXHR, textStatus, errorThrown) { alert(errorThrown) },
       success: function (data) {
 
-        data = data;
-        return data;
+
+        var lines = data.split("\n");
+
+        var result = [];
+
+        var headers = lines[0].split(",");
+
+        for (var i = 1; i < lines.length; i++) {
+
+          var room = {};
+          var currentline = lines[i].split(",");
+
+          for (var j = 0; j < headers.length; j++) {
+            room[headers[j]] = currentline[j];
+          }
+
+          result.push(room);
+          alert (JSON.stringify(result));
+
+        }
+
+        var display;
+
+        for (var i = 0; i < result.length; i++) {
+          display += result[0].toSource() + "<br><br>";
+        }
+        $("#div1").html(display);
 
       }
-      //return data;
     });
-    return data;
 
   });
 
 
-  var lines = data.split("\n");
+  //Dropdown//
 
-  var result = [];
+  $("#first-choice").change(function () {
 
-  var headers = lines[0].split(",");
+    var $dropdown = $(this);
 
-  for (var i = 1; i < lines.length; i++) {
+    $.getJSON("https://api.myjson.com/bins/1eqrg8", function (data) {
 
-    var room = {};
-    var currentline = lines[i].split(",");
+      var key = $dropdown.val();
+      var vals = [];
 
-    for (var j = 0; j < headers.length; j++) {
-      room[headers[j]] = currentline[j];
-    }
+      switch (key) {
+        case 'beverages':
+          vals = data.beverages.split(",");
+          break;
+        case 'snacks':
+          vals = data.snacks.split(",");
+          break;
+        case 'base':
+          vals = ['Please choose from above'];
+      }
 
-    result.push(room);
+      var $secondChoice = $("#second-choice");
+      $secondChoice.empty();
+      $.each(vals, function (index, value) {
+        $secondChoice.append("<option>" + value + "</option>");
+      });
 
-  }
-  alert("a");
-  var display;
-
-  for (var i = 0; i < result.length; i++) {
-    display += result[0].toSource() + "<br><br>";
-  }
-  alert("a");
-  $("#div1").html("a");
-
-
-
+    });
+  });
 </script>

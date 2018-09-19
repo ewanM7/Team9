@@ -1,0 +1,186 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="div1"></div>
+
+    <select id="type-dropdown" name="type">
+    </select>
+
+    <button class="type-btn" type="submit">
+        Select Type
+    </button>
+
+    <select id="room-dropdown" name="room">
+    </select>
+
+
+    <select id="time-dropdown" name="time">
+    </select>
+
+
+
+    <button class="go-btn" type="submit">
+        Go
+    </button>
+
+
+
+
+</body>
+
+</html>
+
+<script>
+
+    /* Code to turn csv into JSON - doesn't do anything, will try to fix later */
+
+    var myJson;
+
+
+    $(document).ready(function () {
+        debugger;
+        $.ajax({
+            url: "../Datasets/CSV/Temperature.csv",
+            dataType: "text",
+            error: function (jqXHR, textStatus, errorThrown) { alert(errorThrown) },
+            success: function (data) {
+
+                var lines = data.split("\n");
+
+                var result = [];
+
+
+
+                var headers = lines[0].split(",");
+
+                for (var i = 1; i < lines.length; i++) {
+
+
+                    var obj = {};
+                    var currentline = lines[i].split(",");
+
+                    for (var j = 0; j < headers.length; j++) {
+                        obj[headers[j]] = currentline[j];
+                    }
+
+                    result.push(obj);
+
+                    //alert (JSON.stringify(result));
+                    //$("#div1").html(JSON.stringify(result));
+                    myJson = (JSON.stringify(result));
+                    return JSON.stringify(result); //JSON
+
+
+                }
+
+
+
+            }
+        });
+
+    });
+
+    /* End of not working JSON code */
+
+    var url = 'temp.json';
+
+    //Dropdown//
+    let typedropdown = $('#type-dropdown');
+    let roomdropdown = $('#room-dropdown');
+    let timedropdown = $('#time-dropdown');
+
+    typedropdown.empty();
+    roomdropdown.empty();
+    timedropdown.empty();
+
+    typedropdown.append('<option selected="true" disabled>Choose Data Type</option>');
+    roomdropdown.append('<option selected="true" disabled>Choose Room</option>');
+    timedropdown.append('<option selected="true" disabled>Choose Time</option>');
+
+    typedropdown.prop('selectedIndex', 0);
+    roomdropdown.prop('selectedIndex', 0);
+    timedropdown.prop('selectedIndex', 0);
+
+    typedropdown.append('<option value="Temperature">Temperature</option>');
+    typedropdown.append('<option value="Bins">Bins</option>');
+
+
+    //var selectedTime = $('#type-dropdown').val()
+
+
+    /*switch(selectedTime) {
+    case Temperature:
+        url = 'temp.json';
+        break;
+    case Bins:
+        url = 'bin.json';
+        break;
+} */
+
+    $('.type-btn').click(function () {
+        var selectedTime = $('#type-dropdown').val();
+        alert("selectedTime");
+
+        switch (selectedTime) {
+            case Temperature:
+                url = 'temp.json';
+                break;
+            case Bins:
+                url = 'bin.json';
+                break;
+        }
+
+        //alert (url);
+    })
+
+
+
+
+    $('.go-btn').click(function () {
+
+
+
+
+
+        $.getJSON(url, function (data) {
+
+            $.each(data, function (key, entry) {
+
+
+                var times = [];
+
+                $.each(entry, function (key2, entry2) {
+
+                    // alert(key2);
+                    if (key2 != 'column0') {
+                        timedropdown.append($('<option></option>').attr('value', key2).text(key2));
+                    }
+
+                })
+                roomdropdown.append($('<option></option>').attr('value', entry.column0).text(entry.column0));
+
+
+
+
+
+            });
+
+
+            var room = roomdropdown.prop('selectedIndex');
+
+            //alert(room);
+
+            var time = $('#time-dropdown').val()
+            $("#div1").html("The temperature in room " + room + " at " + time + " was " + data[room - 1][time]);
+
+            //alert(data["1"][time]);
+
+        })
+
+    });
+</script>
