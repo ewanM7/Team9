@@ -15,7 +15,7 @@
                 border: 1px solid #ccc;
                 background-color: #f1f1f1;
             }
-                
+
             /* Style the buttons inside the tab */
             .tab button {
                 background-color: inherit;
@@ -74,7 +74,11 @@
     </head>
     <body onload="startUP()">
         <!--contains the entire content of each POI-->
+<<<<<<< HEAD
+        <div class="container" style="position:relative; width: 100%; height: 300px; border: 1px solid black;">
+=======
         <div class="container" style="position:relative; height:300px; border: 1px solid black;">
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
             <!--Contains the tabs at the top of each POI pop-up-->
             <div id="POI_Tabs">
                 <div class="row" id="POI_Tabs_topRow">
@@ -104,9 +108,16 @@
             <!--Contains the content for each of the 6 tabs-->
             <div id="POI_Attribute_Content">
                 <div id="Energy" class="tabcontent" style="height:185px;">
+<<<<<<< HEAD
+                    <h3 class="POIHeader">Energy</h3>
+                    <p id="EnergyParaContent">This is the Energy Tab.</p>
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="EnergyBar" style="width:0%; height:30px; background-color: green"></div>
+=======
                     <div id="EnergyMainContent">
                         <h3 class="POIHeader">Energy</h3>
                         <p id="EnergyParaContent">This is the Energy Tab.</p>
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
                     </div>
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
@@ -122,6 +133,12 @@
                 <div id="Gas" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Gas</h3>
                     <p id="GasParaContent">This is the Gas Tab.</p>
+<<<<<<< HEAD
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="GasBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
@@ -136,6 +153,12 @@
                 <div id="CO2" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">CO2</h3>
                     <p id="CO2ParaContent">This is the CO2 Tab.</p>
+<<<<<<< HEAD
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="CO2Bar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
@@ -150,6 +173,12 @@
                 <div id="Temperature" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Temperature</h3>
                     <p id="TemperatureParaContent">This is the Temperature Tab.</p>
+<<<<<<< HEAD
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="TemperatureBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
@@ -164,6 +193,12 @@
                 <div id="Humidity" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Humidity</h3>
                     <p id="HumidityParaContent">This is the Humidity Tab.</p>
+<<<<<<< HEAD
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="HumidityBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
@@ -178,6 +213,12 @@
                 <div id="Waste" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Waste</h3>
                     <p id="WasteParaContent">This is the Waste Tab.</p>
+<<<<<<< HEAD
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="WasteBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
@@ -211,8 +252,17 @@
             //function is called when the webpage is loaded
             function startUP(){
                 populateTimeSelector();
+<<<<<<< HEAD
+                
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
                 openAttributeTab(event, 'Energy');
+                
                 switchBottomTabs(event, 'EnergyGraphButton','EnergyAnimButton');
+<<<<<<< HEAD
+                
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
             }
 
             //function for top of POI tabs
@@ -246,6 +296,11 @@
 
                 //Called on a tab switch to load data for the new tab
                 timeSelectionChanged();
+<<<<<<< HEAD
+
+                
+=======
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
             }
             
             //function for bottom of POI tabs
@@ -296,10 +351,43 @@
                 for (i = 0; i < allTabs.length; i++) {
                     if (allTabs[i].style.backgroundColor === "red"){
                         activeTabPara = document.getElementById(allTabs[i].innerHTML + "ParaContent");
+<<<<<<< HEAD
+                        //Time should eventually be used to get data which will be placed in
+                        // this function instead of 157, 200 & 100 in order to display it
+                        displayStats(157, 200, 100, allTabs[i].innerHTML);
+                    }
+                }
+                activeTabPara.innerHTML = "Current time is " + activeTime;
+            }
+
+            //function to show a progress bar which will show the level of a reading,
+            //based on its highest and lowest values
+            //stat refers to Energy/gas/humidity etc
+            //value is its current reading
+            function displayStats(statValue, statHighest, statLowest, POIAttributeName){
+                var bar = document.getElementById(POIAttributeName + "Bar");
+                var currentWidth = 0;
+                var finalWidth = ((statValue - statLowest) / (statHighest - statLowest)) * 100;
+                var progressInterval = setInterval(progressbar, 15);
+
+                function progressbar(){
+                
+                    if (currentWidth >= finalWidth){
+                        clearInterval(progressInterval);
+                    }
+                    else{
+                        currentWidth++;
+                        bar.style.width = currentWidth + '%';
+                        bar.innerHTML = currentWidth + '%';
+                    }
+                
+                }
+=======
                     }
                 }
                 activeTabPara.innerHTML = "Current time is " + activeTime;
                 
+>>>>>>> b2df8a267386dc33df373b02a8d3953145d01549
             }
         </script>
     </body>
