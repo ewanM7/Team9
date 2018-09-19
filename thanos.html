@@ -15,7 +15,7 @@
                 border: 1px solid #ccc;
                 background-color: #f1f1f1;
             }
-                
+
             /* Style the buttons inside the tab */
             .tab button {
                 background-color: inherit;
@@ -74,7 +74,7 @@
     </head>
     <body onload="startUP()">
         <!--contains the entire content of each POI-->
-        <div class="container" style="position:relative; height: 300px; border: 1px solid black;">
+        <div class="container" style="position:relative; width: 100%; height: 300px; border: 1px solid black;">
             <!--Contains the tabs at the top of each POI pop-up-->
             <div id="POI_Tabs">
                 <div class="row" id="POI_Tabs_topRow">
@@ -104,87 +104,103 @@
             <!--Contains the content for each of the 6 tabs-->
             <div id="POI_Attribute_Content">
                 <div id="Energy" class="tabcontent" style="height:185px;">
-                    <div id="EnergyMainContent">
-                        <h3 class="POIHeader">Energy</h3>
-                        <p>This is the Energy Tab.</p>
+                    <h3 class="POIHeader">Energy</h3>
+                    <p id="EnergyParaContent">This is the Energy Tab.</p>
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="EnergyBar" style="width:0%; height:30px; background-color: green"></div>
                     </div>
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                            <button id="EnergyAnimButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'EnergyGraphButton','EnergyAnimButton')">Animated View</button>
+                            <button id="EnergyAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'EnergyGraphButton','EnergyAnimButton')">Animated View</button>
                         </div>
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0"> 
-                            <button id="EnergyGraphButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'EnergyAnimButton','EnergyGraphButton')">Graph View</button>
+                            <button id="EnergyGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'EnergyAnimButton','EnergyGraphButton')">Graph View</button>
                         </div>
                     </div>
                 </div>
                   
                 <div id="Gas" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Gas</h3>
-                    <p>This is the Gas Tab.</p>
+                    <p id="GasParaContent">This is the Gas Tab.</p>
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="GasBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                            <button id="GasAnimButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'GasGraphButton','GasAnimButton')" disabled>Animated View</button>
+                            <button id="GasAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'GasGraphButton','GasAnimButton')" disabled>Animated View</button>
                         </div>
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0"> 
-                            <button id="GasGraphButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'GasAnimButton','GasGraphButton')">Graph View</button>
+                            <button id="GasGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'GasAnimButton','GasGraphButton')">Graph View</button>
                         </div>
                     </div>
                 </div>
                   
                 <div id="CO2" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">CO2</h3>
-                    <p>This is the CO2 Tab.</p>
+                    <p id="CO2ParaContent">This is the CO2 Tab.</p>
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="CO2Bar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                            <button id="CO2AnimButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'CO2GraphButton','CO2AnimButton')" disabled>Animated View</button>
+                            <button id="CO2AnimButton" style="width:100%" onclick="switchBottomTabs(event, 'CO2GraphButton','CO2AnimButton')" disabled>Animated View</button>
                         </div>
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0"> 
-                            <button id="CO2GraphButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'CO2AnimButton','CO2GraphButton')">Graph View</button>
+                            <button id="CO2GraphButton" style="width:100%" onclick="switchBottomTabs(event, 'CO2AnimButton','CO2GraphButton')">Graph View</button>
                         </div>
                     </div>
                 </div>
     
                 <div id="Temperature" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Temperature</h3>
-                    <p>This is the Temperature Tab.</p>
+                    <p id="TemperatureParaContent">This is the Temperature Tab.</p>
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="TemperatureBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                            <button id="TemperatureAnimButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureGraphButton','TemperatureAnimButton')" disabled>Animated View</button>
+                            <button id="TemperatureAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureGraphButton','TemperatureAnimButton')" disabled>Animated View</button>
                         </div>
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0"> 
-                            <button id="TemperatureGraphButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureAnimButton','TemperatureGraphButton')">Graph View</button>
+                            <button id="TemperatureGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureAnimButton','TemperatureGraphButton')">Graph View</button>
                         </div>
                     </div>
                 </div>
                       
                 <div id="Humidity" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Humidity</h3>
-                    <p>This is the Humidity Tab.</p>
+                    <p id="HumidityParaContent">This is the Humidity Tab.</p>
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="HumidityBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                            <button id="HumidityAnimButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'HumidityGraphButton','HumidityAnimButton')" disabled>Animated View</button>
+                            <button id="HumidityAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'HumidityGraphButton','HumidityAnimButton')" disabled>Animated View</button>
                         </div>
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0"> 
-                            <button id="HumidityGraphButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'HumidityAnimButton','HumidityGraphButton')">Graph View</button>
+                            <button id="HumidityGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'HumidityAnimButton','HumidityGraphButton')">Graph View</button>
                         </div>
                     </div>
                 </div>
                       
                 <div id="Waste" class="tabcontent" style="height:185px">
                     <h3 class="POIHeader">Waste</h3>
-                    <p>This is the Waste Tab.</p>
+                    <p id="WasteParaContent">This is the Waste Tab.</p>
+                    <div id="progress" style="width:50%; background-color: bisque;">
+                        <div id="WasteBar" style="width:0%; height:30px; background-color: green"></div>
+                    </div>
                     <!--Contains the tabs at the bottom of each POI Attribute-->
                     <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                            <button id="WasteAnimButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'WasteGraphButton','WasteAnimButton')" disabled>Animated View</button>
+                            <button id="WasteAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'WasteGraphButton','WasteAnimButton')" disabled>Animated View</button>
                         </div>
                         <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0"> 
-                            <button id="WasteGraphButton" class="tablinks" style="width:100%" onclick="switchBottomTabs(event, 'WasteAnimButton','WasteGraphButton')">Graph View</button>
+                            <button id="WasteGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'WasteAnimButton','WasteGraphButton')">Graph View</button>
                         </div>
                     </div>
                 </div>
@@ -193,9 +209,7 @@
             <!--Contains the Selectors for time and date-->
             <div id="Selectors" class="row" style="width:100%; padding:0;margin:0;">
                 <div class="col-xs-6">
-                    <select id="TimeSelector" style="width:100%">
-
-                    </select>
+                    <select id="TimeSelector" style="width:100%" onchange="timeSelectionChanged()"></select>
                 </div>
                 <div class="col-xs-6">
                     <select id="DateSelector" style="width:100%">
@@ -212,9 +226,12 @@
         <script>
             //function is called when the webpage is loaded
             function startUP(){
-                openAttributeTab(event, 'Energy');
-                switchBottomTabs(event, 'EnergyGraphButton','EnergyAnimButton');
                 populateTimeSelector();
+                
+                openAttributeTab(event, 'Energy');
+                
+                switchBottomTabs(event, 'EnergyGraphButton','EnergyAnimButton');
+                
             }
 
             //function for top of POI tabs
@@ -228,12 +245,14 @@
                 tablinks = document.getElementsByClassName("tablinks");
                 for (i = 0; i < tablinks.length; i++) {
                     tablinks[i].className = tablinks[i].className.replace(" active", "");
-                    
+
                     if (tablinks[i].textContent === POIAttributeName){
-                        tablinks[i].style.backgroundColor = "red"
+                        tablinks[i].style.backgroundColor = "red";
+                        tablinks[i].disabled = true;
                     }
                     else{
                         tablinks[i].style.backgroundColor = "#f1f1f1";
+                        tablinks[i].disabled = false;
                     }
                 }
                 
@@ -243,6 +262,11 @@
                 var activeGraphButton = POIAttributeName + 'GraphButton';
                 var activeAnimButton = POIAttributeName + 'AnimButton';
                 switchBottomTabs(event, activeGraphButton,activeAnimButton);
+
+                //Called on a tab switch to load data for the new tab
+                timeSelectionChanged();
+
+                
             }
             
             //function for bottom of POI tabs
@@ -279,6 +303,49 @@
 
                     TimeSelector.appendChild(timeOptionOnHour);
                     TimeSelector.appendChild(timeOptionHalfHour);
+                }
+            }
+            
+            //get and display selected time on correct tab
+            //NOTE: Will be used to select a time and get the data for that time
+            function timeSelectionChanged(){
+                var activeTimeSelector = document.getElementById("TimeSelector");
+                var activeTime = activeTimeSelector.options[activeTimeSelector.selectedIndex].value;
+                var allTabs, activeTabPara;
+
+                allTabs = document.getElementsByClassName("tablinks");
+                for (i = 0; i < allTabs.length; i++) {
+                    if (allTabs[i].style.backgroundColor === "red"){
+                        activeTabPara = document.getElementById(allTabs[i].innerHTML + "ParaContent");
+                        //Time should eventually be used to get data which will be placed in
+                        // this function instead of 157, 200 & 100 in order to display it
+                        displayStats(157, 200, 100, allTabs[i].innerHTML);
+                    }
+                }
+                activeTabPara.innerHTML = "Current time is " + activeTime;
+            }
+
+            //function to show a progress bar which will show the level of a reading,
+            //based on its highest and lowest values
+            //stat refers to Energy/gas/humidity etc
+            //value is its current reading
+            function displayStats(statValue, statHighest, statLowest, POIAttributeName){
+                var bar = document.getElementById(POIAttributeName + "Bar");
+                var currentWidth = 0;
+                var finalWidth = ((statValue - statLowest) / (statHighest - statLowest)) * 100;
+                var progressInterval = setInterval(progressbar, 15);
+
+                function progressbar(){
+                
+                    if (currentWidth >= finalWidth){
+                        clearInterval(progressInterval);
+                    }
+                    else{
+                        currentWidth++;
+                        bar.style.width = currentWidth + '%';
+                        bar.innerHTML = currentWidth + '%';
+                    }
+                
                 }
             }
         </script>
