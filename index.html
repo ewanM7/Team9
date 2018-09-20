@@ -19,6 +19,8 @@
   <script src="./js/PoiViewContainer.js"></script>
   <script src="./js/DomHelpers.js"></script>
   <script src="./js/PoiView.js"></script>
+  <script src="./js/dataLoading.js"></script>
+
 
 
   <link rel="stylesheet" href="css/style.css">
@@ -35,11 +37,15 @@
     <div class="eegeo-marker-pin-icon frame-icon"></div>
     <p id="poiText"></p>
 
-    <div class="frame-container">
-      <iframe class="frame" src="https://zeno.computing.dundee.ac.uk/2018-projects/team9/thanos.html"></iframe>
+    <div id="frameId" class="frame-container">
     </div>
   </div>
 
+  <script>
+    
+
+
+  </script>
 
   <div id="widget-container" class="wrld-widget-container"></div>
   <div id="map" class="mapdiv" style="float:left; width:100%; height:100%;"></div>
@@ -53,90 +59,96 @@
           <img src="images/energy.png" style="width: 50px;">
         </td>
         <td style="border-left:0px;">Energy</br>
-          <button onClick="showMore('energy')">Show More</button>
+          <button id="energyButton" onClick="showMore('energy')" class="buttonCSS">V</button>
         </td>
-        <td>DATA_VALUE</td>
+        <td>
+          <h1>
+            <script>
+              
+            </script>
+          </h1>
+        </td>
       </tr>
       <tr id="sidebar_energy_details" style="display:none;">
-        <td style="border-right:0px;">TEST CONTENT</td>
-        <td style="border-left:0px;">TEST CONTENT</td>
-        <td>TEST CONTENT</td>
+        <td style="border-right:0px;">TEST</td>
+        <td style="border-left:0px;">TEST</td>
+        <td>TEST</td>
       </tr>
       <tr>
         <td style="width:10px; border-right:0px;">
           <img src="images/gas.png " style="width: 50px; ">
         </td>
         <td style="border-left:0px; ">Gas</br>
-          <button onClick="showMore( 'gas') ">Show More</button>
+          <button id="gasButton" onClick="showMore('gas') " class="buttonCSS">V</button>
         </td>
         <td>DATA_VALUE</td>
       </tr>
-      <tr id="sidebar_gas_details " style="display:none; ">
-        <td style="border-right:0px; ">TEST CONTENT</td>
-        <td style="border-left:0px; ">TEST CONTENT</td>
-        <td style=" ">TEST CONTENT</td>
+      <tr id="sidebar_gas_details" style="display:none; ">
+        <td style="border-right:0px; ">TEST</td>
+        <td style="border-left:0px; ">TEST</td>
+        <td style=" ">TEST</td>
       </tr>
       <tr>
         <td style="width:10px; border-right:0px;">
           <img src="images/co2.png" style="width: 50px;">
         </td>
         <td style="border-left:0px;">CO2</br>
-          <button onClick="showMore('co2')">Show More</button>
+          <button id="co2Button" onClick="showMore('co2')" class="buttonCSS">V</button>
         </td>
         <td>DATA_VALUE</td>
       </tr>
       <tr id="sidebar_co2_details" style="display:none;">
-        <td style="border-right:0px;">TEST CONTENT</td>
-        <td style="border-left:0px;">TEST CONTENT</td>
-        <td style="">TEST CONTENT</td>
+        <td style="border-right:0px;">TEST</td>
+        <td style="border-left:0px;">TEST</td>
+        <td style="">TEST</td>
       </tr>
       <tr>
         <td style="width:10px; border-right:0px;">
-          <button id="showButton" onclick="showPanel()" style="margin-left:-100px; z-index:-1; position:absolute; visibility:hidden;">
-            Show Sidebar</button>
-          <img src="images/temp.png " style="width: 50px; ">
+          <button id="showButton" onclick="showPanel()" style="margin-left:-80px; z-index:-1; position:absolute; visibility:hidden;"><<<
+              Show </button>
+              <img src="images/temp.png " style="width: 50px; ">
         </td>
         <td style="border-left:0px; ">Temperature</br>
-          <button onClick="showMore('temp')">Show More</button>
+          <button id="tempButton" onClick="showMore('temp')" class="buttonCSS">V</button>
         </td>
         <td>DATA_VALUE</td>
       </tr>
       <tr id="sidebar_temp_details" style="display:none;">
-        <td style="border-right:0px;">TEST CONTENT</td>
-        <td style="border-left:0px;">TEST CONTENT</td>
-        <td style="">TEST CONTENT</td>
+        <td style="border-right:0px;">TEST</td>
+        <td style="border-left:0px;">TEST</td>
+        <td style="">TEST</td>
       </tr>
       <tr>
         <td style="width:10px; border-right:0px; ">
           <img src="images/humidity.png " style="width: 50px; ">
         </td>
         <td style="border-left:0px; ">Humidity</br>
-          <button onClick="showMore( 'humidity')">Show More</button>
+          <button id="humidityButton" onClick="showMore('humidity')" class="buttonCSS">V</button>
         </td>
         <td>DATA_VALUE</td>
       </tr>
-      <tr id="sidebar_humidity_details " style="display:none; ">
-        <td style="border-right:0px; ">TEST CONTENT</td>
-        <td style="border-left:0px; ">TEST CONTENT</td>
-        <td style=" ">TEST CONTENT</td>
+      <tr id="sidebar_humidity_details" style="display:none; ">
+        <td style="border-right:0px; ">TEST</td>
+        <td style="border-left:0px; ">TEST</td>
+        <td style=" ">TEST</td>
       </tr>
       <tr>
         <td style="width:10px; border-right:0px; ">
           <img src="images/waste.png " style="width: 50px; ">
         </td>
         <td style="border-left:0px; ">Waste</br>
-          <button onClick="showMore( 'waste') ">Show More</button>
+          <button id="wasteButton" onClick="showMore('waste') " class="buttonCSS">V</button>
         </td>
         <td>DATA_VALUE</td>
       </tr>
-      <tr id="sidebar_waste_details " style="display:none; ">
-        <td style="border-right:0px; ">TEST CONTENT</td>
-        <td style="border-left:0px; ">TEST CONTENT</td>
-        <td style=" ">TEST CONTENT</td>
+      <tr id="sidebar_waste_details" style="display:none; ">
+        <td style="border-right:0px; ">TEST</td>
+        <td style="border-left:0px; ">TEST</td>
+        <td style=" ">TEST</td>
       </tr>
       <tr>
         <td colspan="3 " style="height:30px; text-align:center; background-color: #4A4A4A; ">
-          <button onclick="hidePanel() ">Hide</button>
+          <button onclick="hidePanel() ">Hide >>></button>
         </td>
       </tr>
     </table>
