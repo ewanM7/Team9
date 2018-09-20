@@ -31,15 +31,50 @@
 
 <body>
 
-  <!-- Modal content -->
-  <div id="myModal" class="modal-content">
-    <span class="close">&times;</span>
-    <div class="eegeo-marker-pin-icon frame-icon"></div>
-    <p id="poiText"></p>
+    <script>
+        //let wrapper = document.getElementById("myHTMLWrapper");
+
+        let myHTML = `
+                <tr>
+        <td style="width:10px; border-right:0px;">
+          <img src="images/energy.png" style="width: 50px;">
+        </td>
+        <td style="border-left:0px;">Energy</br>
+          <button id="energyButton" onClick="showMore("energy")">V</button>
+          <p>Text here</p>
+        </td>
+        <td>
+          <script>
+            document.write(getDataAverage("Electricity") + " kWh");
+        </scr'+'ipt>
+            </td>
+            </tr>
+            <tr id="sidebar_energy_details" style="display:none;">
+                <td style="border-right:0px;">
+                    <script>
+
+                     </scr'+'ipt>
+                </td>
+                <td style="border-left:0px;">
+                    <script>
+            document.write("<span class='redText'>" + getHighestValue("Electricity").room + "</span><br>");
+            document.write("<span class='greenText'>" + getLowestValue("Electricity").room + "</span>");
+        </scr'+'ipt>
+                </td>
+                <td>
+                    <script>
+            document.write(getHighestValue("Electricity").value + " kWh<br>");
+            document.write(getLowestValue("Electricity").value + " kWh");
+        </scr'+'ipt>
+                </td>
+            </tr>
+            <tr>`;
+    </script>
+
+
 
     <div id="frameId" class="frame-container">
     </div>
-  </div>
 
   <div id="widget-container" class="wrld-widget-container"></div>
   <div id="map" class="mapdiv" style="float:left; width:100%; height:100%;"></div>
