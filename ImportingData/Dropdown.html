@@ -8,12 +8,6 @@
 
     <div id="div1"></div>
 
-    <select id="type-dropdown" name="type">
-    </select>
-
-    <button class="type-btn" type="submit">
-        Select Type
-    </button>
 
     <select id="room-dropdown" name="room">
     </select>
@@ -21,8 +15,6 @@
 
     <select id="time-dropdown" name="time">
     </select>
-
-
 
     <button class="go-btn" type="submit">
         Go
@@ -87,90 +79,47 @@
 
     /* End of not working JSON code */
 
-    var url = 'temp.json';
 
-    //Dropdown//
-    let typedropdown = $('#type-dropdown');
+    //Dropdown// 
+    url = 'temp.json';
+
     let roomdropdown = $('#room-dropdown');
     let timedropdown = $('#time-dropdown');
 
-    typedropdown.empty();
     roomdropdown.empty();
     timedropdown.empty();
 
-    typedropdown.append('<option selected="true" disabled>Choose Data Type</option>');
     roomdropdown.append('<option selected="true" disabled>Choose Room</option>');
     timedropdown.append('<option selected="true" disabled>Choose Time</option>');
 
-    typedropdown.prop('selectedIndex', 0);
     roomdropdown.prop('selectedIndex', 0);
     timedropdown.prop('selectedIndex', 0);
 
-    typedropdown.append('<option value="Temperature">Temperature</option>');
-    typedropdown.append('<option value="Bins">Bins</option>');
 
 
-    //var selectedTime = $('#type-dropdown').val()
+    $.getJSON(url, function (data) {
+
+        $.each(data, function (key, entry) {
 
 
-    /*switch(selectedTime) {
-    case Temperature:
-        url = 'temp.json';
-        break;
-    case Bins:
-        url = 'bin.json';
-        break;
-} */
+            var times = [];
 
-    $('.type-btn').click(function () {
-        var selectedTime = $('#type-dropdown').val();
-        alert("selectedTime");
+            $.each(entry, function (key2, entry2) {
 
-        switch (selectedTime) {
-            case Temperature:
-                url = 'temp.json';
-                break;
-            case Bins:
-                url = 'bin.json';
-                break;
-        }
+                // alert(key2);
+                if (key2 != 'column0') {
+                    timedropdown.append($('<option></option>').attr('value', key2).text(key2));
+                }
 
-        //alert (url);
-    })
-
-
-
-
-    $('.go-btn').click(function () {
+            })
+            roomdropdown.append($('<option></option>').attr('value', entry.column0).text(entry.column0));
 
 
 
 
 
-        $.getJSON(url, function (data) {
-
-            $.each(data, function (key, entry) {
-
-
-                var times = [];
-
-                $.each(entry, function (key2, entry2) {
-
-                    // alert(key2);
-                    if (key2 != 'column0') {
-                        timedropdown.append($('<option></option>').attr('value', key2).text(key2));
-                    }
-
-                })
-                roomdropdown.append($('<option></option>').attr('value', entry.column0).text(entry.column0));
-
-
-
-
-
-            });
-
-
+        });
+        $('.go-btn').click(function () {
             var room = roomdropdown.prop('selectedIndex');
 
             //alert(room);

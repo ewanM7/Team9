@@ -41,6 +41,42 @@ function getData(name) {
 
 }
 
+// Gets the data from the JSON file and stores it in an array.
+function getDataWithDate(name, date) {
+
+    let url;
+
+    switch (name) {
+
+        case "Temperature":
+            url = 'Datasets/' + date + '/temperature.json';
+            break;
+        case "Waste":
+            url = 'Datasets/' + date + '/bin.json';
+            break;
+        case "CO2":
+            url = 'Datasets/' + date + '/co2.json';
+            break;
+        case "Energy":
+            url = 'Datasets/' + date + '/electricity.json';
+            break;
+        case "Gas":
+            url = 'Datasets/' + date + '/gas.json';
+            break;
+        case "Humidity":
+            url = 'Datasets/' + date + '/humidity.json';
+            break;
+    }
+
+    let values = [];
+    let rooms = [];
+    return $.getJSON(url, function (data) {
+        return data;
+    }).responseJSON;
+
+
+}
+
 function averageHelper(arr) {
     let total = 0;
     for (let i = 0; i < arr.length; i++) {
@@ -99,7 +135,6 @@ function getRoomAverages(values) {
 // All the rooms
 // name - data sheet name
 function getHighestValue(name) {
-
     let values = getData(name);
 
     let roomAverages = getRoomAverages(values);
@@ -110,8 +145,21 @@ function getHighestValue(name) {
 
     return { room: values[index].room, value: highest };
 }
+function getHighestValues(name) {
+    let values = getData(name);
+    let highestValues = [];
+    let roomAverages = getRoomAverages(values);
+    for (let i = 0; i < 3; i++) {
+        let highest = Math.max(...roomAverages);
+        highest = highest.toFixed(2)
+        let index = roomAverages.indexOf(Math.max(...roomAverages));
+        highestValues.push({ room: values[index].room, value: highest });
+        roomAverages.splice(index, 1);
+    }
+    return highestValues;
+}
 // A specific room
-function getHighestValue(name, room) {
+function getHighestValueInRoom(name, room) {
 
     let values = getData(name);
     let roomData = getRoomData(values, room);
@@ -137,8 +185,21 @@ function getLowestValue(name) {
     return { room: values[index].room, value: lowest };
 
 }
+function getLowestValues(name) {
+    let values = getData(name);
+    let lowestValues = [];
+    let roomAverages = getRoomAverages(values);
+    for (let i = 0; i < 3; i++) {
+        let lowest = Math.min(...roomAverages);
+        lowest = lowest.toFixed(2)
+        let index = roomAverages.indexOf(Math.min(...roomAverages));
+        lowestValues.push({ room: values[index].room, value: lowest });
+        roomAverages.splice(index, 1);
+    }
+    return lowestValues;
+}
 // A specific room
-function getLowestValue(name, room) {
+function getLowestValueInRoom(name, room) {
 
     let values = getData(name);
 

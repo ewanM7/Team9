@@ -1,0 +1,261 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8" />
+<html>
+
+<head>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/poi_api/latest/poi_api.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+
+  <link href="https://cdn-webgl.wrld3d.com/wrldjs/addons/resources/latest/css/wrld.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/searchbar/latest/searchbar.js"></script>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/marker_controller/latest/marker_controller.js"></script>
+  <script src="https://cdn-webgl.wrld3d.com/wrldjs/addons/indoor_control/latest/indoor_control.js"></script>
+
+  <script src="./js/MarkerController.js"></script>
+  <script src="./js/MapController.js"></script>
+  <script src="./js/PoiViewContainer.js"></script>
+  <script src="./js/DomHelpers.js"></script>
+  <script src="./js/PoiView.js"></script>
+  <script src="./js/dataLoading.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/custom_style.css">
+  <link rel="stylesheet" type="text/css" href="css/sidebarStyling.css">
+
+</head>
+
+<body>
+
+  <!-- Modal content -->
+  <div id="myModal" class="modal-content">
+    <span class="close">&times;</span>
+    <div class="eegeo-marker-pin-icon frame-icon"></div>
+    <p id="poiText"></p>
+
+    <div class="frame-container">
+      <iframe class="frame" src="https://zeno.computing.dundee.ac.uk/2018-projects/team9/thanos.html"></iframe>
+    </div>
+  </div>
+
+
+
+  <div id="widget-container" class="wrld-widget-container"></div>
+  <div id="map" class="mapdiv" style="float:left; width:100%; height:100%;"></div>
+  <div id="hi"></div>
+  <div id="paneldiv" class="paneldiv" style="float:right; width:0%; height:100%;">
+    <table id="sidebarTable" class="darkTable">
+      <tr>
+        <th colspan="3" style="height:75px; text-align:center;">Westport House</th>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;">
+          <img src="images/energy.png" style="width: 50px;">
+        </td>
+        <td style="border-left:0px;">Energy</br>
+          <button id="energyButton" onClick="showMore('energy')">V</button>
+        </td>
+        <td>
+          <script>
+            document.write(getDataAverage("Electricity") + " kWh");
+          </script>
+        </td>
+      </tr>
+      <tr id="sidebar_energy_details" style="display:none;">
+        <td style="border-right:0px;">
+          <script>
+
+          </script>
+        </td>
+        <td style="border-left:0px;">
+          <script>
+            document.write("<span class='redText'>" + getHighestValue("Electricity").room + "</span><br>");
+            document.write("<span class='greenText'>" + getLowestValue("Electricity").room + "</span>");
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(getHighestValue("Electricity").value + " kWh<br>");
+            document.write(getLowestValue("Electricity").value + " kWh");
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;">
+          <img src="images/gas.png " style="width: 50px; ">
+        </td>
+        <td style="border-left:0px; ">Gas</br>
+          <button id="gasButton" onClick="showMore('gas') ">V</button>
+        </td>
+        <td>
+          <script>
+            document.write(getDataAverage("Gas") + " kWh");
+          </script>
+        </td>
+      </tr>
+      <tr id="sidebar_gas_details" style="display:none; ">
+        <td style="border-right:0px; ">
+
+        </td>
+        <td style="border-left:0px;">
+          <script>
+            document.write("<span class='redText'>" + getHighestValue("Gas").room + "</span><br>");
+            document.write("<span class='greenText'>" + getLowestValue("Gas").room + "</span>");
+          </script>
+        </td>
+        <td>
+          <script>
+            document.write(getHighestValue("Gas").value + " kWh<br>");
+            document.write(getLowestValue("Gas").value + " kWh");
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;">
+          <img src="images/co2.png" style="width: 50px;">
+        </td>
+        <td style="border-left:0px;">CO2</br>
+          <button id="co2Button" onClick="showMore('co2')">V</button>
+        </td>
+        <td>
+          <script>
+            document.write(getDataAverage("CO2") + " kgCO2");
+          </script>
+        </td>
+      </tr>
+      <tr id="sidebar_co2_details" style="display:none;">
+        <td style="border-right:0px;">
+
+        </td>
+        <td style="border-left:0px;">
+          <script>
+            document.write("<span class='redText'>" + getHighestValue("Gas").room + "</span><br>");
+            document.write("<span class='greenText'>" + getLowestValue("Gas").room + "</span>");
+          </script>
+        </td>
+        <td style="">
+          <script>
+            document.write(getHighestValue("CO2").value + " kgCO2<br>");
+            document.write(getLowestValue("CO2").value + " kgCO2");
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px;">
+          <button id="showButton" onclick="showPanel()" style="margin-left:-80px; z-index:-1; position:absolute; visibility:hidden;"><<<
+              Show </button>
+              <img src="images/temp.png " style="width: 50px; ">
+        </td>
+        <td style="border-left:0px; ">Temperature</br>
+          <button id="tempButton" onClick="showMore('temp')">V</button>
+        </td>
+        <td>
+          <script>
+            document.write(getDataAverage("Temperature") + " &deg;c");
+          </script>
+        </td>
+      </tr>
+      <tr id="sidebar_temp_details" style="display:none;">
+        <td style="border-right:0px;">
+
+        </td>
+        <td style="border-left:0px;">
+          <script>
+            document.write("<span class='redText'>" + getHighestValue("Temperature").room + "</span><br>");
+            document.write("<span class='greenText'>" + getLowestValue("Temperature").room + "</span>");
+          </script>
+        </td>
+        <td style="">
+          <script>
+            document.write(getHighestValue("Temperature").value + " &deg;c<br>");
+            document.write(getLowestValue("Temperature").value + " &deg;c");
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px; ">
+          <img src="images/humidity.png " style="width: 50px; ">
+        </td>
+        <td style="border-left:0px; ">Humidity</br>
+          <button id="humidityButton" onClick="showMore('humidity')">V</button>
+        </td>
+        <td>
+          <script>
+            document.write(getDataAverage("Humidity") + " %");
+          </script>
+        </td>
+      </tr>
+      <tr id="sidebar_humidity_details" style="display:none; ">
+        <td style="border-right:0px; ">
+        </td>
+        <td style="border-left:0px; ">
+          <script>
+            document.write("<span class='redText'>" + getHighestValue("Humidity").room + "</span><br>");
+            document.write("<span class='greenText'>" + getLowestValue("Humidity").room + "</span>");
+          </script>
+        </td>
+        <td style=" ">
+          <script>
+            document.write("Highest: " + getHighestValue("Humidity").value + " %<br>");
+            document.write("Lowest: " + getLowestValue("Humidity").value + " %");
+          </script>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:10px; border-right:0px; ">
+          <img src="images/waste.png " style="width: 50px; ">
+        </td>
+        <td style="border-left:0px; ">Waste</br>
+          <button id="wasteButton" onClick="showMore('waste') ">V</button>
+        </td>
+        <td>
+          <script>
+            document.write(getDataAverage("Bins") + " %");
+          </script>
+        </td>
+      </tr>
+      <tr id="sidebar_waste_details" style="display:none; ">
+        <td style="border-right:0px; ">
+
+        </td>
+        <td style="border-left:0px; ">
+          <script>
+            document.write("<span class='redText'>" + getHighestValue("Bins").room + "</span><br>");
+            document.write("<span class='greenText'>" + getLowestValue("Bins").room + "</span>");
+          </script>
+        </td>
+        <td style=" ">
+            <script>
+                document.write("Highest: " + getHighestValue("Bins").value + " %<br>");
+                document.write("Lowest: " + getLowestValue("Bins").value + " %");
+              </script>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3 " style="height:30px; text-align:center; background-color: #4A4A4A; ">
+          <button onclick="hidePanel() ">Hide >>></button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  <script>
+    var wrapper = document.getElementById("hi");
+  
+    var myHTML = '';
+  
+    for (var i = 0; i < 10; i++) {
+      myHTML += '<span class="test">Testing out my script! loop #' + (i + 1) + '</span><br/><br/>';
+    }
+  
+    wrapper.innerHTML = myHTML
+  
+  </script>
+  <script src="./js/page.js "></script>
+  <script src="./js/sidebar.js "></script>
+  <script src="./js/poiPopUp.js "></script>
+</body>
+
+</html>

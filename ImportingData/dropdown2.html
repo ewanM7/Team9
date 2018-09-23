@@ -37,57 +37,8 @@
 
 <script>
 
-    /* Code to turn csv into JSON - doesn't do anything, will try to fix later */
-
-    var myJson;
 
 
-    $(document).ready(function () {
-        debugger;
-        $.ajax({
-            url: "../Datasets/CSV/Temperature.csv",
-            dataType: "text",
-            error: function (jqXHR, textStatus, errorThrown) { alert(errorThrown) },
-            success: function (data) {
-
-                var lines = data.split("\n");
-
-                var result = [];
-
-
-
-                var headers = lines[0].split(",");
-
-                for (var i = 1; i < lines.length; i++) {
-
-
-                    var obj = {};
-                    var currentline = lines[i].split(",");
-
-                    for (var j = 0; j < headers.length; j++) {
-                        obj[headers[j]] = currentline[j];
-                    }
-
-                    result.push(obj);
-
-                    //alert (JSON.stringify(result));
-                    //$("#div1").html(JSON.stringify(result));
-                    myJson = (JSON.stringify(result));
-                    return JSON.stringify(result); //JSON
-
-
-                }
-
-
-
-            }
-        });
-
-    });
-
-    /* End of not working JSON code */
-
-    var url = 'temp.json';
 
     //Dropdown//
     let typedropdown = $('#type-dropdown');
@@ -108,79 +59,92 @@
 
     typedropdown.append('<option value="Temperature">Temperature</option>');
     typedropdown.append('<option value="Bins">Bins</option>');
+    typedropdown.append('<option value="CO2">CO2</option>');
+    typedropdown.append('<option value="Electricity">Electricity</option>');
+    typedropdown.append('<option value="Gas">Gas</option>');
+    typedropdown.append('<option value="Gas">Humidity</option>');
 
 
-    //var selectedTime = $('#type-dropdown').val()
 
-
-    /*switch(selectedTime) {
-    case Temperature:
-        url = 'temp.json';
-        break;
-    case Bins:
-        url = 'bin.json';
-        break;
-} */
+    var url = '../Datasets/JSON/temperature.json';
 
     $('.type-btn').click(function () {
-        var selectedTime = $('#type-dropdown').val();
-        alert("selectedTime");
 
-        switch (selectedTime) {
-            case Temperature:
+
+
+
+        var selectedType = $('#type-dropdown').val();
+        //alert(selectedType);
+
+        switch (selectedType) {
+            case "Temperature":
+                // alert("t");
                 url = 'temp.json';
+
                 break;
-            case Bins:
+            case "Bins":
+                // alert("b");
                 url = 'bin.json';
                 break;
+            case "CO2":
+                url = 'co2.json';
+                break;
+            case "Electricity":
+                url = 'electricity.json';
+                break;
+            case "Gas":
+                url = 'gas.json';
+                break;
+            case "Humidity":
+                url = 'humidity.json';
+                break;
         }
-
-        //alert (url);
-    })
-
-
-
-
-    $('.go-btn').click(function () {
-
-
-
 
 
         $.getJSON(url, function (data) {
 
-            $.each(data, function (key, entry) {
+            $.each(data, (key, entry) => {
 
 
                 var times = [];
 
+                
+
                 $.each(entry, function (key2, entry2) {
 
-                    // alert(key2);
-                    if (key2 != 'column0') {
+                    console.log(key2 + " " + entry2);
+                    if (key2 != 'room') {
                         timedropdown.append($('<option></option>').attr('value', key2).text(key2));
                     }
 
                 })
-                roomdropdown.append($('<option></option>').attr('value', entry.column0).text(entry.column0));
+                roomdropdown.append($('<option></option>').attr('value', entry.room).text(entry.room));
 
 
 
 
 
             });
+            $('.go-btn').click( () => {
 
 
-            var room = roomdropdown.prop('selectedIndex');
+                var room = roomdropdown.prop('selectedIndex');
 
-            //alert(room);
+                //alert(room);
 
-            var time = $('#time-dropdown').val()
-            $("#div1").html("The temperature in room " + room + " at " + time + " was " + data[room - 1][time]);
+                var time = $('#time-dropdown').val()
+                $("#div1").html("The " + selectedType + " in room " + room + " at " + time + " was " + data[room - 1][time]);
 
-            //alert(data["1"][time]);
+                //alert(data["1"][time]);
 
-        })
+            })
 
-    });
+        });
+
+
+    })
+
+
+
+
 </script>
