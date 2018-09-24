@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" 
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+        crossorigin="anonymous">
+        <meta name="viewport" />
+        <style>
+            .scottsRotator{
+                -webkit-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="scottsStyles.css" />
+    </head>
+    <body onload="progress(150, 200, 100); spanboys();">
+        <div id="progress" class="scottsRotator" style="height:150px; width:100px; background-color: bisque;">
+            <div id="bar" class="scottsRotator" style="height:100%; background-color: green;"></div>
+            
+            <div style="width:100%; margin:0; padding: 3px; position:relative; top:-30px">
+                <span class="dot animation-target"></span>
+                <span class="dot animation-target2"></span>
+                <span class="dot animation-target"></span>
+                <span class="dot animation-target2"></span>
+                <span class="dot animation-target"></span>
+                <span class="dot animation-target2"></span>
+            </div>
+                
+            
+            
+        </div>
+    </body>
+    <script>
+        //function to show a progress bar which will show the level of a reading,
+        //based on its highest and lowest values
+        //stat refers to Energy/gas/humidity etc
+        //value is its current reading
+        function progress(statValue, statHighest, statLowest){
+            var bar = document.getElementById("bar");
+            var currentheight = 0;
+            var finalheight = ((statValue - statLowest) / (statHighest - statLowest)) * 100;
+            
+            var scottsInterval = setInterval(progressbar, 15);
+            function progressbar(){
+                
+                if (currentheight >= finalheight){
+                    clearInterval(scottsInterval);
+                }
+                else{
+                    currentheight++;
+                }
+                bar.style.height = currentheight + '%';
+                //bar.innerHTML = currentheight + '%';
+            }
+        }
+
+        function spanboys(){
+            
+        }
+    </script>
+</html>

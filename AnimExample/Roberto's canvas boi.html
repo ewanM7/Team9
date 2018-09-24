@@ -1,0 +1,83 @@
+<html>
+    <head>
+
+
+    </head>
+
+    <body onload="progress(150, 200, 100); spanboys();">
+            <div id="progress" class="scottsRotator" style="height:150px; width:100px; background-color: white;">
+                <div id="bar" class="scottsRotator" style="height:100%; background-color: green;"></div>
+                
+                <div style="width:100%; margin:0; padding: 3px; position:relative; top:-30px">
+                    <span class="dot animation-target"></span>
+                    <span class="dot animation-target2"></span>
+                    <span class="dot animation-target"></span>
+                    <span class="dot animation-target2"></span>
+                    <span class="dot animation-target"></span>
+                    <span class="dot animation-target2"></span>
+                </div>
+                    
+                <canvas id="myCanvas" width="500" height="500"style="z-index: 0;">
+                        Your browser does not support the HTML5 canvas tag.</canvas>
+                        
+                
+            </div>
+        </body>
+            
+        <script>
+            var c=document.getElementById("myCanvas");
+
+var ctx=c.getContext("2d");
+ctx.beginPath();
+ctx.moveTo(40,142);
+ctx.lineTo(40,100);
+ctx.lineTo(70,100);
+ctx.lineTo(70,140);
+ctx.lineTo(40,140);
+ctx.moveTo(95,50)
+ctx.arc(55, 50, 40, 0, 1 * Math.PI, true);
+ctx.lineTo(40,100);
+ctx.moveTo(95,50)
+ctx.lineTo(70,100);
+ctx.lineWidth = 4;
+//ctx.arcTo(40,90,40,100,20);
+//ctx.moveTo(90,50)
+//ctx.arcTo(90,90,40,100,20);
+ctx.fillStyle="yellow";
+ctx.fill();
+ctx.stroke();
+
+    </script>
+
+<script>
+        //function to show a progress bar which will show the level of a reading,
+        //based on its highest and lowest values
+        //stat refers to Energy/gas/humidity etc
+        //value is its current reading
+        function progress(statValue, statHighest, statLowest){
+            var bar = document.getElementById("bar");
+            var currentheight = 0;
+            var finalheight = ((statValue - statLowest) / (statHighest - statLowest)) * 100;
+            
+            var scottsInterval = setInterval(progressbar, 15);
+            function progressbar(){
+                
+                if (currentheight >= finalheight){
+                    clearInterval(scottsInterval);
+                }
+                else{
+                    currentheight++;
+                }
+                bar.style.height = currentheight + '%';
+                //bar.innerHTML = currentheight + '%';
+            }
+        }
+
+        function spanboys(){
+            
+        }
+    </script>
+
+
+
+</html>

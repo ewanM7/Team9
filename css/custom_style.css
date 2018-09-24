@@ -62,3 +62,11 @@ body {
 .eegeo-searchbar-container {
     display: none;
 }
+
+.redText {
+    color:red;
+}
+
+.greenText {
+    color:green;
+}

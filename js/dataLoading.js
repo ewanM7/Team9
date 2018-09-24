@@ -15,13 +15,13 @@ function getData(name) {
         case "Temperature":
             url = 'Datasets/JSON/temperature.json';
             break;
-        case "Bins":
+        case "Waste":
             url = 'Datasets/JSON/bin.json';
             break;
         case "CO2":
             url = 'Datasets/JSON/co2.json';
             break;
-        case "Electricity":
+        case "Energy":
             url = 'Datasets/JSON/electricity.json';
             break;
         case "Gas":
@@ -32,7 +32,41 @@ function getData(name) {
             break;
     }
 
-    //console.log(url);
+    let values = [];
+    let rooms = [];
+    return $.getJSON(url, function (data) {
+        return data;
+    }).responseJSON;
+
+
+}
+
+// Gets the data from the JSON file and stores it in an array.
+function getDataWithDate(name, date) {
+
+    let url;
+
+    switch (name) {
+
+        case "Temperature":
+            url = 'Datasets/' + date + '/temperature.json';
+            break;
+        case "Waste":
+            url = 'Datasets/' + date + '/bin.json';
+            break;
+        case "CO2":
+            url = 'Datasets/' + date + '/co2.json';
+            break;
+        case "Energy":
+            url = 'Datasets/' + date + '/electricity.json';
+            break;
+        case "Gas":
+            url = 'Datasets/' + date + '/gas.json';
+            break;
+        case "Humidity":
+            url = 'Datasets/' + date + '/humidity.json';
+            break;
+    }
 
     let values = [];
     let rooms = [];
@@ -49,6 +83,14 @@ function averageHelper(arr) {
         total += arr[i];
     }
     return total / arr.length;
+}
+
+function getRoomData(data, roomName) {
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].room === roomName) {
+            return data[i];
+        }
+    }
 }
 
 //Gets the average of the data in the array.
@@ -70,23 +112,29 @@ function getDataAverage(name) {
     return average;
 }
 
+function toJustData(obj) {
+    let justData = [];
+    $.each(obj, (key, entry) => {
+        if (!isNaN(entry)) {
+            justData.push(entry);
+        }
+    });
+    return justData;
+}
+
 function getRoomAverages(values) {
     let roomAverages = [];
     for (let i = 0; i < values.length; i++) {
-        let justData = [];
-        $.each(values[i], (key, entry) => {
-            if (!isNaN(entry)) {
-                justData.push(entry);
-            }
-        });
+        let justData = toJustData(values[i]);
         roomAverages.push(averageHelper(justData));
     }
     return roomAverages;
 }
 
 //Gets the highest value in the array;
+// All the rooms
+// name - data sheet name
 function getHighestValue(name) {
-
     let values = getData(name);
 
     let roomAverages = getRoomAverages(values);
@@ -95,9 +143,31 @@ function getHighestValue(name) {
     highest = highest.toFixed(2)
     let index = roomAverages.indexOf(Math.max(...roomAverages));
 
-    return {room: values[index].room, value: highest};
+    return { room: values[index].room, value: highest };
+}
+function getHighestValues(name) {
+    let values = getData(name);
+    let highestValues = [];
+    let roomAverages = getRoomAverages(values);
+    for (let i = 0; i < 3; i++) {
+        let highest = Math.max(...roomAverages);
+        highest = highest.toFixed(2)
+        let index = roomAverages.indexOf(Math.max(...roomAverages));
+        highestValues.push({ room: values[index].room, value: highest });
+        roomAverages.splice(index, 1);
+    }
+    return highestValues;
+}
+// A specific room
+function getHighestValueInRoom(name, room) {
 
+    let values = getData(name);
+    let roomData = getRoomData(values, room);
+    let justData = toJustData(roomData);
+    let highest = Math.max(...justData);
+    highest = highest.toFixed(2)
 
+    return highest;
 }
 
 //Gets the lowest value in the array;
@@ -112,7 +182,41 @@ function getLowestValue(name) {
 
     let index = roomAverages.indexOf(Math.min(...roomAverages));
 
-    return {room: values[index].room, value: lowest};
+    return { room: values[index].room, value: lowest };
+
+}
+function getLowestValues(name) {
+    let values = getData(name);
+    let lowestValues = [];
+    let roomAverages = getRoomAverages(values);
+    for (let i = 0; i < 3; i++) {
+        let lowest = Math.min(...roomAverages);
+        lowest = lowest.toFixed(2)
+        let index = roomAverages.indexOf(Math.min(...roomAverages));
+        lowestValues.push({ room: values[index].room, value: lowest });
+        roomAverages.splice(index, 1);
+    }
+    return lowestValues;
+}
+// A specific room
+function getLowestValueInRoom(name, room) {
+
+    let values = getData(name);
+
+    let roomData = getRoomData(values, room);
+    let justData = toJustData(roomData);
+    let lowest = Math.min(...justData);
+    lowest = lowest.toFixed(2)
+
+    return lowest;
+}
+// Get data at specific time
+function getDataAt(name, room, time) {
+    let values = getData(name);
+
+    let roomData = getRoomData(values, room);
+
+    return roomData[time];
 
 }
 
