@@ -30,6 +30,8 @@ let room5Poly = [
     [56.459867909481986, -2.9783626190991543],
     [56.45989617540689, -2.9784802731830515]];
 
+    let room6Poly = [56.46011312441028, 0.00006339455];
+
 
 let room9Poly = [
     [56.46007893306824, -2.9786330858723935],
@@ -143,9 +145,13 @@ function setRoom(room) {
             console.log("5");
             poly = L.polygon(room5Poly, floor1).addTo(map);
             break;
+            case "Room 6":
+            console.log("6");
+            poly= L.circle(room6Poly, floor1).addTo(map);
+            break;
         case "Room 9":
             console.log("9");
-            poly = L.polygon(room9Poly, floorG).addTo(map);
+            poly = L.polygon(room9Poly, floor2).addTo(map);
             break;
         case "Room 19":
             console.log("19");

@@ -1,0 +1,45 @@
+<html>
+<head>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+  <script src="./js/dataLoading.js"></script>
+</head>
+<body>
+<div id="tester" style="width:100%;height:100%;"></div>
+
+<script>
+var TESTER = document.getElementById('tester');
+
+var dataName = 'CO2'; //data category
+var currentDate = '21-09-2018' ; //selected date
+var currentRoom = 'Room 12'; //selected room
+
+var times = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30', '24:00'];
+var tempData = getRoomData(getDataWithDate(dataName, currentDate), currentRoom);
+
+var data = [];
+
+for (let i = 0; i < 48; i++) {
+	time = times[i];
+    data.push(tempData[time]);
+}
+
+
+Plotly.newPlot( TESTER, [{
+    x: times,
+    y: data }],
+	{ //layout options go here
+		margin: { t: 0 }, 
+		width: 402,
+		height: 185,
+		xaxis: { title: 'Time' },
+		yaxis: { title: dataName, range: [0,10] }
+	},
+	{displayModeBar: false},
+	{responsive: true}	);
+	
+console.log( Plotly.BUILD );
+</script>
+</body>
+</html>

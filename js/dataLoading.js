@@ -86,6 +86,7 @@ function averageHelper(arr) {
 }
 
 function getRoomData(data, roomName) {
+    console.log(data);
     for (let i = 0; i < data.length; i++) {
         if (data[i].room === roomName) {
             return data[i];
@@ -169,6 +170,17 @@ function getHighestValueInRoom(name, room) {
 
     return highest;
 }
+// A specific room
+function getHighestValueInRoomWithDate(name, room, date) {
+
+    let values = getDataWithDate(name, date);
+    let roomData = getRoomData(values, room);
+    let justData = toJustData(roomData);
+    let highest = Math.max(...justData);
+    highest = highest.toFixed(2)
+
+    return highest;
+}
 
 //Gets the lowest value in the array;
 function getLowestValue(name) {
@@ -210,10 +222,30 @@ function getLowestValueInRoom(name, room) {
 
     return lowest;
 }
+function getLowestValueInRoomWithDate(name, room, date) {
+
+    let values = getDataWithDate(name, date);
+
+    let roomData = getRoomData(values, room);
+    let justData = toJustData(roomData);
+    let lowest = Math.min(...justData);
+    lowest = lowest.toFixed(2)
+
+    return lowest;
+}
 // Get data at specific time
 function getDataAt(name, room, time) {
     let values = getData(name);
 
+    let roomData = getRoomData(values, room);
+
+    return roomData[time];
+
+}
+
+function getDataAtWithDate(name, room, time, date) {
+    let values = getDataWithDate(name, date);
+    console.log(values);
     let roomData = getRoomData(values, room);
 
     return roomData[time];

@@ -7,6 +7,7 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <script src="./js/dataLoading.js"></script>
 
@@ -115,6 +116,277 @@
             overflow: hidden;
         }
     </style>
+    <style id="colourChangeStyles">
+        .greenColChangeText {
+            -webkit-animation: green_col_change_text 1s infinite alternate;
+	        -moz-animation: green_col_change_text 1s infinite alternate;
+	        -ms-animation: green_col_change_text 1s infinite alternate;
+	        -o-animation: green_col_change_text 1s infinite alternate;
+	        animation: green_col_change_text 1s infinite alternate;
+        }
+
+        @-webkit-keyframes green_col_change_text {
+	        from { color: #91FCAD; }
+	        to { color: #00FF43; }
+        }
+
+        @-moz-keyframes green_col_change_text {
+	        from { color: #91FCAD; }
+	        to { color: #00FF43; }
+        }
+
+        @-ms-keyframes green_col_change_text {
+	        from { color: #91FCAD; }
+	        to { color: #00FF43; }
+        }
+
+        @-o-keyframes green_col_change_text {
+	        from { color: #91FCAD; }
+	        to { color: #00FF43; }
+        }
+
+        @keyframes green_col_change_text {
+	        from { color: #91FCAD; }
+	        to { color: #00FF43; }
+        }
+
+        .greenColChangeBorder {
+            -webkit-animation: green_col_change_border 1s infinite alternate;
+	        -moz-animation: green_col_change_border 1s infinite alternate;
+	        -ms-animation: green_col_change_border 1s infinite alternate;
+	        -o-animation: green_col_change_border 1s infinite alternate;
+	        animation: green_col_change_border 1s infinite alternate;
+        }
+
+        @-webkit-keyframes green_col_change_border {
+	        from { border-color: #91FCAD; }
+	        to { border-color: #00FF43; }
+        }
+
+        @-moz-keyframes green_col_change_border {
+	        from { border-color: #91FCAD; }
+	        to { border-color: #00FF43; }
+        }
+
+        @-ms-keyframes green_col_change_border {
+	        from { border-color: #91FCAD; }
+	        to { border-color: #00FF43; }
+        }
+
+        @-o-keyframes green_col_change_border {
+	        from { border-color: #91FCAD; }
+	        to { border-color: #00FF43; }
+        }
+
+        @keyframes green_col_change_border {
+	        from { border-color: #91FCAD; }
+	        to { border-color: #00FF43; }
+        }
+        
+        /*-----------------------------------------------------------------------------------------------*/
+
+        .yellowColChangeText {
+            -webkit-animation: yellow_col_change_text 1s infinite alternate;
+	        -moz-animation: yellow_col_change_text 1s infinite alternate;
+	        -ms-animation: yellow_col_change_text 1s infinite alternate;
+	        -o-animation: yellow_col_change_text 1s infinite alternate;
+	        animation: yellow_col_change_text 1s infinite alternate;
+        }
+
+        @-webkit-keyframes yellow_col_change_text {
+	        from { color: #CAD137; }
+	        to { color: #F3FF00; }
+        }
+
+        @-moz-keyframes yellow_col_change_text {
+	        from { color: #CAD137; }
+	        to { color: #F3FF00; }
+        }
+
+        @-ms-keyframes yellow_col_change_text {
+	        from { color: #CAD137; }
+	        to { color: #F3FF00; }
+        }
+
+        @-o-keyframes yellow_col_change_text {
+	        from { color: #CAD137; }
+	        to { color: #F3FF00; }
+        }
+
+        @keyframes yellow_col_change_text {
+	        from { color: #CAD137; }
+	        to { color: #F3FF00; }
+        }
+
+        .yellowColChangeBorder {
+            -webkit-animation: yellow_col_change_border 1s infinite alternate;
+	        -moz-animation: yellow_col_change_border 1s infinite alternate;
+	        -ms-animation: yellow_col_change_border 1s infinite alternate;
+	        -o-animation: yellow_col_change_border 1s infinite alternate;
+	        animation: yellow_col_change_border 1s infinite alternate;
+        }
+
+        @-webkit-keyframes yellow_col_change_border {
+	        from { border-color: #CAD137; }
+	        to { border-color: #F3FF00; }
+        }
+
+        @-moz-keyframes yellow_col_change_border {
+	        from { border-color: #CAD137; }
+	        to { border-color: #F3FF00; }
+        }
+
+        @-ms-keyframes yellow_col_change_border {
+	        from { border-color: #CAD137; }
+	        to { border-color: #F3FF00; }
+        }
+
+        @-o-keyframes yellow_col_change_border {
+	        from { border-color: #CAD137; }
+	        to { border-color: #F3FF00; }
+        }
+
+        @keyframes yellow_col_change_border {
+	        from { border-color: #CAD137; }
+	        to { border-color: #F3FF00; }
+        }
+
+        /*-----------------------------------------------------------------------------------------------*/
+
+        .orangeColChangeText {
+            -webkit-animation: orange_col_change_text 1s infinite alternate;
+	        -moz-animation: orange_col_change_text 1s infinite alternate;
+	        -ms-animation: orange_col_change_text 1s infinite alternate;
+	        -o-animation: orange_col_change_text 1s infinite alternate;
+	        animation: orange_col_change_text 1s infinite alternate;
+        }
+
+        @-webkit-keyframes orange_col_change_text {
+	        from { color: #FFB07C; }
+	        to { color: #FF6400; }
+        }
+
+        @-moz-keyframes orange_col_change_text {
+	        from { color: #FFB07C; }
+	        to { color: #FF6400; }
+        }
+
+        @-ms-keyframes orange_col_change_text {
+	        from { color: #FFB07C; }
+	        to { color: #FF6400; }
+        }
+
+        @-o-keyframes orange_col_change_text {
+	        from { color: #FFB07C; }
+	        to { color: #FF6400; }
+        }
+
+        @keyframes orange_col_change_text {
+	        from { color: #FFB07C; }
+	        to { color: #FF6400; }
+        }
+
+        .orangeColChangeBorder {
+            -webkit-animation: orange_col_change_border 1s infinite alternate;
+	        -moz-animation: orange_col_change_border 1s infinite alternate;
+	        -ms-animation: orange_col_change_border 1s infinite alternate;
+	        -o-animation: orange_col_change_border 1s infinite alternate;
+	        animation: orange_col_change_border 1s infinite alternate;
+        }
+
+        @-webkit-keyframes orange_col_change_border {
+	        from { border-color: #FFB07C; }
+	        to { border-color: #FF6400; }
+        }
+
+        @-moz-keyframes orange_col_change_border {
+	        from { border-color: #FFB07C; }
+	        to { border-color: #FF6400; }
+        }
+
+        @-ms-keyframes orange_col_change_border {
+	        from { border-color: #FFB07C; }
+	        to { border-color: #FF6400; }
+        }
+
+        @-o-keyframes orange_col_change_border {
+	        from { border-color: #FFB07C; }
+	        to { border-color: #FF6400; }
+        }
+
+        @keyframes orange_col_change_border {
+	        from { border-color: #FFB07C; }
+	        to { border-color: #FF6400; }
+        }
+
+        /*-----------------------------------------------------------------------------------------------*/
+
+        .redColChangeText {
+            -webkit-animation: red_col_change_text 1s infinite alternate;
+	        -moz-animation: red_col_change_text 1s infinite alternate;
+	        -ms-animation: red_col_change_text 1s infinite alternate;
+	        -o-animation: red_col_change_text 1s infinite alternate;
+	        animation: red_col_change_text 1s infinite alternate;
+        }
+
+        @-webkit-keyframes red_col_change_text {
+	        from { color: #FF7C7C; }
+	        to { color: #FF0000; }
+        }
+
+        @-moz-keyframes red_col_change_text {
+	        from { color: #FF7C7C; }
+	        to { color: #FF0000; }
+        }
+
+        @-ms-keyframes red_col_change_text {
+	        from { color: #FF7C7C; }
+	        to { color: #FF0000; }
+        }
+
+        @-o-keyframes red_col_change_text {
+	        from { color: #FF7C7C; }
+	        to { color: #FF0000; }
+        }
+
+        @keyframes red_col_change_text {
+	        from { color: #FF7C7C; }
+	        to { color: #FF0000; }
+        }
+
+        .redColChangeBorder {
+            -webkit-animation: red_col_change_border 1s infinite alternate;
+	        -moz-animation: red_col_change_border 1s infinite alternate;
+	        -ms-animation: red_col_change_border 1s infinite alternate;
+	        -o-animation: red_col_change_border 1s infinite alternate;
+	        animation: red_col_change_border 1s infinite alternate;
+        }
+
+        @-webkit-keyframes red_col_change_border {
+	        from { border-color: #FF7C7C; }
+	        to { border-color: #FF0000; }
+        }
+
+        @-moz-keyframes red_col_change_border {
+	        from { border-color: #FF7C7C; }
+	        to { border-color: #FF0000; }
+        }
+
+        @-ms-keyframes red_col_change_border {
+	        from { border-color: #FF7C7C; }
+	        to { border-color: #FF0000; }
+        }
+
+        @-o-keyframes red_col_change_border {
+	        from { border-color: #FF7C7C; }
+	        to { border-color: #FF0000; }
+        }
+
+        @keyframes red_col_change_border {
+	        from { border-color: #FF7C7C; }
+	        to { border-color: #FF0000; }
+        }
+    </style>
 </head>
 
 <body onload="startUP()">
@@ -151,31 +423,47 @@
             <div id="Energy" class="tabcontent" style="height:185px;">
                 <h3 class="POIHeader">Energy</h3>
 
-                <!--Stats Display: CURRENTLY NOT WORKING-->
-                <!---->
-                <div >
-                    <p>Test 1</p>
-                    <p>Test 2</p>
-                    <p>Test 3</p>
-                    <p>Test 4</p>
+                <div id="EnergyAnimView">
+                    <!--Stats Display: CURRENTLY NOT WORKING-->
+                    <div id="EnergyStatsBox" style="top:-25px; left:17px; width: 170px; display:inline-block; position: relative; border: solid 5px green">
+                        <div>
+                            <p style="display:inline-block; margin-left: 5px;">Reading: </p>
+                            <p id="EnergyReading" style="display:inline-block;">XX.XXkWh</p>
+                        </div>
+                        <div>
+                            <p style="display:inline-block; color: red; margin-left: 5px;">Day Highest: </p>
+                            <p id="EnergyHighest" style="display:inline-block;">XX.XXkWh</p>
+                        </div>
+                        <div>
+                            <p style="display:inline-block; color: green; margin-left: 5px;">Day Lowest: </p>
+                            <p id="EnergyLowest" style="display:inline-block;">XX.XXkWh</p>
+                        </div>
+                        <div>
+                            <p style="display:inline-block; margin-left: 5px;">Current usage: </p>
+                            <p id="EnergyStatus" style="display:inline-block; font-weight: bold;">XXX</p>
+                        </div>
+                    </div>
+                
+                    <!--Animated View-->
+                    <div id="EnergyBackgroundAnim" class="parent" style="left:25px">
+                        <div id="EnergyActiveAnim" class="child"></div>
+                    </div>
                 </div>
-                <!---->
 
-                <!--Animated View-->
-                <div id="EnergyBackgroundAnim" class="parent" style="left:200px">
-                    <div id="EnergyActiveAnim" class="child"></div>
+                <div id="EnergyGraphView">
+                        PLACE GRAPH CONTENT HERE (ENERGY)
                 </div>
 
                 <!--Contains the tabs at the bottom of each POI Attribute-->
                 <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="EnergyAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'EnergyGraphButton','EnergyAnimButton')">Animated
-                            View
+                        <button id="EnergyAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'EnergyGraphButton','EnergyAnimButton', 'Energy')">Animated
+                            View1
                         </button>
                     </div>
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="EnergyGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'EnergyAnimButton','EnergyGraphButton')">Graph
-                            View
+                        <button id="EnergyGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'EnergyAnimButton','EnergyGraphButton', 'Energy')">Graph
+                            View1
                         </button>
                     </div>
                 </div>
@@ -183,21 +471,47 @@
 
             <div id="Gas" class="tabcontent" style="height:185px">
                 <h3 class="POIHeader">Gas</h3>
-                
-                <div id="GasBackgroundAnim" class="parent">
-                    <div id="GasActiveAnim" class="child"></div>
+                    <div id="GasAnimView">
+                        <!--Stats Display: CURRENTLY NOT WORKING-->
+                        <div id="GasStatsBox" style="top:-25px; left:17px; width: 170px; display:inline-block; position: relative; border: solid 5px green">
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Reading: </p>
+                                <p id="GasReading" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: red; margin-left: 5px;">Day Highest: </p>
+                                <p id="GasHighest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: green; margin-left: 5px;">Day Lowest: </p>
+                                <p id="GasLowest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Current usage: </p>
+                                <p id="GasStatus" style="display:inline-block; font-weight: bold;">XXX</p>
+                            </div>
+                        </div>
+                    
+                        <!--Animated View-->
+                        <div id="GasBackgroundAnim" class="parent" style="left:40px;">
+                            <div id="GasActiveAnim" class="child"></div>
+                        </div>
+                    </div>
+
+                <div id="GasGraphView">
+                        PLACE GRAPH CONTENT HERE (GAS)
                 </div>
 
                 <!--Contains the tabs at the bottom of each POI Attribute-->
                 <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="GasAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'GasGraphButton','GasAnimButton')" disabled>Animated
-                            View
+                        <button id="GasAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'GasGraphButton','GasAnimButton', 'Gas')" disabled>Animated
+                            View2
                         </button>
                     </div>
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="GasGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'GasAnimButton','GasGraphButton')">Graph
-                            View
+                        <button id="GasGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'GasAnimButton','GasGraphButton', 'Gas')">Graph
+                            View2
                         </button>
                     </div>
                 </div>
@@ -205,20 +519,49 @@
 
             <div id="CO2" class="tabcontent" style="height:185px">
                 <h3 class="POIHeader">CO2</h3>
-                
-                <div id="CO2BackgroundAnim" class="parent">
-                    <div id="CO2ActiveAnim" class="child"></div>
+                <div id="CO2AnimView">
+                        <!--Stats Display: CURRENTLY NOT WORKING-->
+                        <div id="CO2StatsBox" style="top:-25px; left:17px; width: 170px; display:inline-block; position: relative; border: solid 5px green">
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Reading: </p>
+                                <p id="CO2Reading" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: red; margin-left: 5px;">Day Highest: </p>
+                                <p id="CO2Highest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: green; margin-left: 5px;">Day Lowest: </p>
+                                <p id="CO2Lowest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Current usage: </p>
+                                <p id="CO2Status" style="display:inline-block; font-weight: bold;">XXX</p>
+                            </div>
+                        </div>
+                    
+                        <!--Animated View-->
+                        <div id="CO2BackgroundAnim" class="parent" style="left:45px;">
+                            <div id="CO2ActiveAnim" class="child"></div>
+                        </div>
                 </div>
+                
+                <div id="CO2GraphView">
+						<div id="tester" style="width:100%;height:100%;"></div>
+							<script>
+							
+							</script>
+				</div>
 
                 <!--Contains the tabs at the bottom of each POI Attribute-->
                 <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="CO2AnimButton" style="width:100%" onclick="switchBottomTabs(event, 'CO2GraphButton','CO2AnimButton')" disabled>Animated
+                        <button id="CO2AnimButton" style="width:100%" onclick="switchBottomTabs(event, 'CO2GraphButton','CO2AnimButton', 'CO2')" disabled>Animated
                             View
                         </button>
                     </div>
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="CO2GraphButton" style="width:100%" onclick="switchBottomTabs(event, 'CO2AnimButton','CO2GraphButton')">Graph
+                        <button id="CO2GraphButton" style="width:100%" onclick="switchBottomTabs(event, 'CO2AnimButton','CO2GraphButton', 'CO2')">Graph
                             View
                         </button>
                     </div>
@@ -227,19 +570,45 @@
 
             <div id="Temperature" class="tabcontent" style="height:185px">
                 <h3 class="POIHeader">Temperature</h3>
-                
-                <div id="TemperatureBackgroundAnim" class="parent">
-                    <div id="TemperatureActiveAnim" class="child"></div>
+                <div id="TemperatureAnimView">
+                        <!--Stats Display: CURRENTLY NOT WORKING-->
+                        <div id="TemperatureStatsBox" style="top:-25px; left:17px; width: 170px; display:inline-block; position: relative; border: solid 5px green">
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Reading: </p>
+                                <p id="TemperatureReading" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: red; margin-left: 5px;">Day Highest: </p>
+                                <p id="TemperatureHighest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: green; margin-left: 5px;">Day Lowest: </p>
+                                <p id="TemperatureLowest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Current usage: </p>
+                                <p id="TemperatureStatus" style="display:inline-block; font-weight: bold;">XXX</p>
+                            </div>
+                        </div>
+                    
+                        <!--Animated View-->
+                        <div id="TemperatureBackgroundAnim" class="parent" style="left:35px">
+                            <div id="TemperatureActiveAnim" class="child"></div>
+                        </div>
+                </div>
+
+                <div id="TemperatureGraphView">
+                        PLACE GRAPH CONTENT HERE (TEMPERATURE)
                 </div>
 
                 <!--Contains the tabs at the bottom of each POI Attribute-->
                 <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="TemperatureAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureGraphButton','TemperatureAnimButton')"
+                        <button id="TemperatureAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureGraphButton','TemperatureAnimButton', 'Temperature')"
                             disabled>Animated View</button>
                     </div>
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="TemperatureGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureAnimButton','TemperatureGraphButton')">Graph
+                        <button id="TemperatureGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'TemperatureAnimButton','TemperatureGraphButton', 'Temperature')">Graph
                             View
                         </button>
                     </div>
@@ -248,19 +617,44 @@
 
             <div id="Humidity" class="tabcontent" style="height:185px">
                 <h3 class="POIHeader">Humidity</h3>
-                
-                <div id="HumidityBackgroundAnim" class="parent">
-                    <div id="HumidityActiveAnim" class="child"></div>
+                <div id="HumidityAnimView">
+                        <!--Stats Display: CURRENTLY NOT WORKING-->
+                        <div id="HumidityStatsBox" style="top:-25px; left:17px; width: 170px; display:inline-block; position: relative; border: solid 5px green">
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Reading: </p>
+                                <p id="HumidityReading" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: red; margin-left: 5px;">Day Highest: </p>
+                                <p id="HumidityHighest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: green; margin-left: 5px;">Day Lowest: </p>
+                                <p id="HumidityLowest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Current usage: </p>
+                                <p id="HumidityStatus" style="display:inline-block; font-weight: bold;">XXX</p>
+                            </div>
+                        </div>
+                    
+                        <!--Animated View-->
+                        <div id="HumidityBackgroundAnim" class="parent" style="left:30px">
+                            <div id="HumidityActiveAnim" class="child"></div>
+                        </div>
                 </div>
-
+                
+                <div id="HumidityGraphView">
+                        PLACE GRAPH CONTENT HERE (HUMIDITY)
+                </div>
                 <!--Contains the tabs at the bottom of each POI Attribute-->
                 <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="HumidityAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'HumidityGraphButton','HumidityAnimButton')"
+                        <button id="HumidityAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'HumidityGraphButton','HumidityAnimButton', 'Humidity')"
                             disabled>Animated View</button>
                     </div>
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="HumidityGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'HumidityAnimButton','HumidityGraphButton')">Graph
+                        <button id="HumidityGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'HumidityAnimButton','HumidityGraphButton', 'Humidity')">Graph
                             View
                         </button>
                     </div>
@@ -269,39 +663,64 @@
 
             <div id="Waste" class="tabcontent" style="height:185px">
                 <h3 class="POIHeader">Waste</h3>
+                <div id="WasteAnimView">
+                        <!--Stats Display: CURRENTLY NOT WORKING-->
+                        <div id="WasteStatsBox" style="top:-25px; left:17px; width: 170px; display:inline-block; position: relative; border: solid 5px green">
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Reading: </p>
+                                <p id="WasteReading" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: red; margin-left: 5px;">Day Highest: </p>
+                                <p id="WasteHighest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; color: green; margin-left: 5px;">Day Lowest: </p>
+                                <p id="WasteLowest" style="display:inline-block;">XX.XXkWh</p>
+                            </div>
+                            <div>
+                                <p style="display:inline-block; margin-left: 5px;">Current usage: </p>
+                                <p id="WasteStatus" style="display:inline-block; font-weight: bold;">XXX</p>
+                            </div>
+                        </div>
+                    
+                        <!--Animated View-->
+                        <div id="WasteBackgroundAnim" class="parent" style="left:25px">
+                            <div id="WasteActiveAnim" class="child"></div>
+                        </div>
+                </div>
                 
-                <div id="WasteBackgroundAnim" class="parent">
-                    <div id="WasteActiveAnim" class="child"></div>
+                <div id="WasteGraphView">
+                    PLACE GRAPH CONTENT HERE (WASTE)
                 </div>
 
                 <!--Contains the tabs at the bottom of each POI Attribute-->
                 <div class="row" id="BottomTabs" style="width:100%; position:absolute; bottom:0;">
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="WasteAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'WasteGraphButton','WasteAnimButton')" disabled>Animated
+                        <button id="WasteAnimButton" style="width:100%" onclick="switchBottomTabs(event, 'WasteGraphButton','WasteAnimButton', 'Waste')" disabled>Animated
                             View
                         </button>
                     </div>
                     <div class="col-xs-6" style="text-align:center; margin: 0%; padding: 0">
-                        <button id="WasteGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'WasteAnimButton','WasteGraphButton')">Graph
+                        <button id="WasteGraphButton" style="width:100%" onclick="switchBottomTabs(event, 'WasteAnimButton','WasteGraphButton', 'Waste')">Graph
                             View
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!--Contains the Selectors for time and date-->
-        <div id="Selectors" class="row" style="width:100%; padding:0;margin:0;">
-            <div class="col-xs-6">
-                <select id="TimeSelector" style="width:100%" onchange="timeSelectionChanged()"></select>
+            
+            
+            <!--Contains the Selectors for time and date-->
+            <div id="Selectors" class="row" style="width:100%; padding:0;margin:0;">
+                <div class="col-xs-6">
+                    <select id="TimeSelector" style="width:100%" onchange="timeSelectionChanged()"></select>
+                </div>
+                <div class="col-xs-6">
+                    <select id="DateSelector" style="width:100%" onchange="timeSelectionChanged()"></select>
+                </div>
             </div>
-            <div class="col-xs-6">
-                <select id="DateSelector" style="width:100%">
-                    <option value="DATE1">Select...</option>
-                </select>
-            </div>
-
-        </div>
+        </div>   
     </div>
 
 
@@ -312,10 +731,11 @@
         function startUP() {
             populateTimeSelector();
 
+            populateDateSelector();
+
             openAttributeTab(event, 'Energy');
 
-            switchBottomTabs(event, 'EnergyGraphButton', 'EnergyAnimButton');
-
+            switchBottomTabs(event, 'EnergyGraphButton', 'EnergyAnimButton', 'Energy');
         }
 
         //function for top of POI tabs
@@ -345,7 +765,7 @@
 
             var activeGraphButton = POIAttributeName + 'GraphButton';
             var activeAnimButton = POIAttributeName + 'AnimButton';
-            switchBottomTabs(event, activeGraphButton, activeAnimButton);
+            switchBottomTabs(event, activeGraphButton, activeAnimButton, POIAttributeName);
 
             //Called on a tab switch to load data for the new tab
             timeSelectionChanged();
@@ -354,14 +774,74 @@
         }
 
         //function for bottom of POI tabs
-        function switchBottomTabs(myEvent, ButtonToEnable, ButtonToDisable) {
+        function switchBottomTabs(myEvent, ButtonToEnable, ButtonToDisable, POIAttributeName) {
 
+            //Handles the button functionality
             document.getElementById(ButtonToEnable).disabled = false;
             document.getElementById(ButtonToEnable).style.backgroundColor = "#f1f1f1";
             document.getElementById(ButtonToDisable).style.backgroundColor = "red";
             document.getElementById(ButtonToDisable).disabled = true;
+            
+            //Handles the content switch
+            var buttonPressed = ButtonToDisable.replace(POIAttributeName, "");
+            
+            if (buttonPressed === "GraphButton"){
+                document.getElementById(POIAttributeName + "AnimView").style.display = 'none';
+                document.getElementById(POIAttributeName + "GraphView").style.display = 'block';
+				drawGraph(POIAttributeName);
+            }
+            else{
+                document.getElementById(POIAttributeName + "GraphView").style.display = 'none';
+                document.getElementById(POIAttributeName + "AnimView").style.display = 'block';
+            }
         }
+		
+		function drawGraph(dataName){
+		
+		var urlParam = function (name, w) {
+					w = w || window;
+					var rx = new RegExp('[\&|\?]' + name + '=([^\&\#]+)'),
+					val = w.location.search.match(rx);
+					return !val ? '' : val[1];
+				}				
+							
+			var activeDateSelector = document.getElementById("DateSelector");
+							
+			var TESTER = document.getElementById('tester');
+			var currentDate = activeDateSelector.options[activeDateSelector.selectedIndex].value; //selected date
+			var roomID = urlParam('room');
+			var currentRoom = 'Room ' + roomID; //room ID
 
+			var times = ['00:00', '00:30', '01:00', '01:30', '02:00', '02:30', '03:00', '03:30', '04:00', '04:30', '05:00', '05:30', '06:00', '06:30', '07:00', '07:30', '08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00', '23:30', '24:00'];
+			var tempData = getRoomData(getDataWithDate(dataName, currentDate), currentRoom);
+
+			var data = [];
+
+			for (let i = 0; i < 48; i++) {
+				time = times[i];
+				data.push(tempData[time]);
+			}
+
+
+			Plotly.newPlot( TESTER, [{
+				x: times,
+				y: data }],
+				{ //layout options go here
+					margin: { t: 0 }, 
+					width: 410,
+					height: 185,
+					yaxis: { title: dataName, range: [0,11] }
+				},
+				{displayModeBar: false},
+				{responsive: true} );
+								
+			console.log( Plotly.BUILD );
+		
+		
+		
+		}
+		
+		
         //populate time selector dropdown
         function populateTimeSelector() {
             var i;
@@ -397,6 +877,19 @@
                 val = w.location.search.match(rx);
             return !val ? '' : val[1];
         }
+        function populateDateSelector() {
+            dates = [
+                "20-09-2018",
+                "21-09-2018",
+                "22-09-2018"
+            ];
+            for (let i = 0; i < 3; i++) {
+                let option = document.createElement("option");
+                option.value = dates[i];
+                option.innerHTML = dates[i];
+                DateSelector.appendChild(option);
+            }
+        }
 
         //get and display selected time on correct tab
         //NOTE: Will be used to select a time and get the data for that time
@@ -404,6 +897,9 @@
             var activeTimeSelector = document.getElementById("TimeSelector");
             var activeTime = activeTimeSelector.options[activeTimeSelector.selectedIndex].value;
             var allTabs;
+            var activeDateSelector = document.getElementById("DateSelector");
+            var activeDate = activeDateSelector.options[activeDateSelector.selectedIndex].value;
+
             //var activeTabPara;
 
             allTabs = document.getElementsByClassName("tablinks");
@@ -414,46 +910,42 @@
                     //Time should eventually be used to get data which will be placed in
                     // this function instead of 157, 200 & 100 in order to display it
                     let roomId = urlParam('room');
-                    let highest = getHighestValueInRoom(POIAttributeName, "Room " + roomId);
-                    let lowest = getLowestValueInRoom(POIAttributeName, "Room " + roomId); 
-                    let dataAtTime = getDataAt(POIAttributeName, "Room " + roomId, activeTime);
-                    console.log(dataAtTime + " " + highest + " " + lowest + "")
-                    
-                    displayStats2(dataAtTime, highest, lowest, POIAttributeName);
+                    let highest = getHighestValueInRoomWithDate(POIAttributeName, "Room " + roomId, activeDate);
+                    let lowest = getLowestValueInRoomWithDate(POIAttributeName, "Room " + roomId, activeDate);
+                    let dataAtTime = getDataAtWithDate(POIAttributeName, "Room " + roomId, activeTime, activeDate);
+
+                    displayStats(dataAtTime, highest, lowest, POIAttributeName);
+					drawGraph(POIAttributeName);
                 }
             }
             //activeTabPara.innerHTML = "Current time is " + activeTime;
         }
 
-        //function to show a progress bar which will show the level of a reading,
-        //based on its highest and lowest values
-        //stat refers to Energy/gas/humidity etc
-        //value is its current reading
-        function displayStats(statValue, statHighest, statLowest, POIAttributeName) {
-            var bar = document.getElementById(POIAttributeName + "Bar");
-            var currentWidth = 0;
-            var finalWidth = ((statValue - statLowest) / (statHighest - statLowest)) * 100;
-            var progressInterval = setInterval(progressbar, 15);
-
-            function progressbar() {
-
-                if (currentWidth >= finalWidth) {
-                    clearInterval(progressInterval);
-                }
-                else {
-                    currentWidth++;
-                    bar.style.width = currentWidth + '%';
-                    bar.innerHTML = currentWidth + '%';
-                }
-
-            }
-        }
-
         //ANIMATION DISPLAY - CURRENTLY IN TESTING DO NOT TOUCH
-        function displayStats2(statValue, statHighest, statLowest, POIAttributeName){
+        function displayStats(statValue, statHighest, statLowest, POIAttributeName){
                 var currentHeight = 0;
                 var finalheight = ((statValue - statLowest) / (statHighest - statLowest)) * 150;
                 var finalPercentage = (finalheight / 150) * 100;
+
+                //Get the relevant units for the active POI attribute (e.g. 'kWh' for energy)
+                var activeUnits;
+                if(POIAttributeName === "Energy" || POIAttributeName === "Gas"){
+                    activeUnits = " kWh";
+                }
+                else if(POIAttributeName === "CO2"){
+                    activeUnits = "kgCO2";
+                }
+                else if(POIAttributeName === "Temperature"){
+                    activeUnits = " °C";
+                }
+                else{
+                    activeUnits = " %";
+                }
+
+                //Display correct stats in the active tab
+                document.getElementById(POIAttributeName + "Reading").innerHTML = statValue + activeUnits;
+                document.getElementById(POIAttributeName + "Highest").innerHTML = statHighest + activeUnits;
+                document.getElementById(POIAttributeName + "Lowest").innerHTML = statLowest + activeUnits;
 
                 //This ensures the user can always see some colour even for low values
                 if(finalheight < 7.5){
@@ -465,15 +957,27 @@
 
                 //COLOUR PICKER           
                 if(finalPercentage <= 25){
+                    document.getElementById(POIAttributeName + "Status").innerHTML = "Low";
+                    document.getElementById(POIAttributeName + "Status").className = "greenColChangeText";
+                    document.getElementById(POIAttributeName + "StatsBox").className = "greenColChangeBorder";
                     document.getElementById(POIAttributeName + 'ActiveAnim').style.backgroundImage = "url('AnimationImages/"+ POIAttributeName +"Low.jpg')";
                 }
                 else if (finalPercentage <=50){
+                    document.getElementById(POIAttributeName + "Status").innerHTML = "Medium";
+                    document.getElementById(POIAttributeName + "Status").className = "yellowColChangeText";
+                    document.getElementById(POIAttributeName + "StatsBox").className = "yellowColChangeBorder";
                     document.getElementById(POIAttributeName + 'ActiveAnim').style.backgroundImage = "url('AnimationImages/"+ POIAttributeName +"Medium.jpg')";
                 }
                 else if (finalPercentage <=75){
+                    document.getElementById(POIAttributeName + "Status").innerHTML = "High";
+                    document.getElementById(POIAttributeName + "Status").className = "orangeColChangeText";
+                    document.getElementById(POIAttributeName + "StatsBox").className = "orangeColChangeBorder";
                     document.getElementById(POIAttributeName + 'ActiveAnim').style.backgroundImage = "url('AnimationImages/"+ POIAttributeName +"High.jpg')";
                 }
                 else{
+                    document.getElementById(POIAttributeName + "Status").innerHTML = "Critical";
+                    document.getElementById(POIAttributeName + "Status").className = "redColChangeText";
+                    document.getElementById(POIAttributeName + "StatsBox").className = "redColChangeBorder";
                     document.getElementById(POIAttributeName + 'ActiveAnim').style.backgroundImage = "url('AnimationImages/"+ POIAttributeName +"VeryHigh.jpg')";
                 }
             
